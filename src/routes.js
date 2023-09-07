@@ -16,6 +16,7 @@ import Register from "./views/auth/Register";
 import PositionTable from "./components/data-tables/PositionTable";
 import LocationTable from "./components/data-tables/LocationTable";
 import Navbox from "./components/Navbox";
+import UserProfile from "./views/UserProfile";
 
 const AppRoutes = () => {
     return(
@@ -36,6 +37,7 @@ const AppRoutes = () => {
                         <Route path="/location/create" element={<AddLocation />}/>
                         <Route path="/positions" element={<PositionTable />}/>
                         <Route path="/locations" element={<LocationTable />}/>
+                        <Route path="/profile" element={<UserProfile />}/>
                     </Route>
                     <Route path="/login" element={<Login />}/>
                     <Route path="/register" element={<Register />}/>

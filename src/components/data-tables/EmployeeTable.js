@@ -106,55 +106,58 @@ const EmployeeTable = () => {
   };
   return (
     <>
-    
-      <TitleBar title={"Employees"} count={"50"} addbtn={"Add Employee"} url={'/employee/create'}/>
+      <TitleBar
+        title={"Employees"}
+        count={"50"}
+        addbtn={"Add Employee"}
+        url={"/employee/create"}
+      />
       <section className="py-3 tableparent">
-        <table className="mytable">
-        <thead>
+        <div className="c" style={{
+            // border: "solid",
+            borderRadius: "3px",
+          }}>
+          <table className="mytable" >
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" />
+                </th>
+                <th scope="col">Name</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Position</th>
+                <th scope="col">Location</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
 
-            <tr>
-              <th>
-                <input type="checkbox" />
-              </th>
-              <th scope="col">Name</th>
-              <th scope="col">Employee ID</th>
-              <th scope="col">Position</th>
-              <th scope="col">Location</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-            </tr>
-        </thead>
-          
-            {data.map((item) => ( <tbody>
-            <tr>
-              <td>
-                <input type="checkbox" 
-                 checked={item.selected || false}
-                onChange={() => handleCheckboxChange(item.id)}
-                />
-              </td>
-              <td>{item.name}</td>
-              <td>{item.employeeId}</td>
-              <td>{item.position}</td>
-              <td>{item.location}</td>
-              <td>{item.email}</td>
-              <td>{item.phone}</td>
-              <td>{item.status}</td>
-              <td>....</td>
-            </tr>
-            
-          </tbody>
-          ))}
-        </table>
+            {data.map((item) => (
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={item.selected || false}
+                      onChange={() => handleCheckboxChange(item.id)}
+                    />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.employeeId}</td>
+                  <td>{item.position}</td>
+                  <td>{item.location}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
+                  <td>{item.status}</td>
+                  <td>....</td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </div>
       </section>
-
-      
-      
-
-  
-
     </>
   );
 };

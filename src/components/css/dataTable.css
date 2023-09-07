@@ -12,7 +12,9 @@
     border-radius: 20px !important ;
    
   }
-  
+  .c{
+    border-radius: 20px;
+  }
   table thead{
     background-color: var(--blue-clr);
   }
