@@ -10,22 +10,20 @@ const TitleBar = (props) => {
             {props.title} <span>({props.count})</span>
           </div>
           <div>
-
-          <form className="">
-          <div className="search-container">
-            <input
-              class=""
-              type="text"
-              placeholder="Search.."
-             className="form-control"
-            />
-            <i className="fa fa-search search-icon" />
-
-          </div>
-            <Link class="add-link bg-orange" to={props.url}>
-              {props.addbtn}
-            </Link>
-          </form>
+            <form className="">
+              <div className="search-container">
+                <input
+                  class=""
+                  type="text"
+                  placeholder="Search.."
+                  className="form-control"
+                />
+                <i className="fa fa-search search-icon" />
+              </div>
+              <Link class="add-link bg-orange" to={props.url}>
+                {props.addbtn}
+              </Link>
+            </form>
           </div>
         </div>
       </section>

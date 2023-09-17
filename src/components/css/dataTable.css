@@ -4,23 +4,26 @@
 -----------------------------------------------------*/
 
 
-.mytable {
+/* .mytable {
     border-collapse: collapse;
     background-color: var(--bg-lightgrey);
     width: 100%;
-    
-    border-radius: 20px !important ;
+    margin: 0 auto; 
+    overflow: hidden; 
+    border-radius: 10px !important ;
    
-  }
-  .c{
-    border-radius: 20px;
-  }
+  } */
   table thead{
     background-color: var(--blue-clr);
+    padding : 50px 0px;
+    /* border: 1px solid saddlebrown; */
+  }
+  table thead tr{
+    padding-top: 40px;
   }
   th{
     background-color: var(--table-hd);
-
+    padding-top: 40px;
   }
   
   table th, td {
@@ -29,10 +32,23 @@
     border-bottom: 1px solid #ddd;
     
   }
+  
   table thead tr:hover{ background-color:var(--blue-clr);}
   tr:hover {background-color: #c9edf8;}
   
-  
+  .rounded-table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: var(--bg-lightgrey);
+    /* max-width: 600px;  */
+    margin: 0 auto; /* Center the table on the page */
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+    overflow: hidden; /* Hide overflow if content exceeds the rounded corners */
+    padding: 40px;
+  }
+  .rounded-table .row-pd{
+      padding: 40px;
+  }
   
   
   

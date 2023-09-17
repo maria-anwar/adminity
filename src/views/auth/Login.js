@@ -5,15 +5,32 @@ import { Formik, Form } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup"; //For Validation Schema
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const [data, setData] = useState([]);
+  //const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const [error, setError] = useState("Will show error message");
-  const user = {
-    email: "maria@mern.com",
-    password: "mm123456",
+  const [error, setError] = useState("");
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyB-ew79o0YFbhYGEOQeNB_ZssQy_OdONfI",
+    authDomain: "adminty-48b7e.firebaseapp.com",
+    projectId: "adminty-48b7e",
+    storageBucket: "adminty-48b7e.appspot.com",
+    messagingSenderId: "516759787652",
+    appId: "1:516759787652:web:f8d3e5d01954d618398ad1",
+    measurementId: "G-XZ01M4PSNJ",
   };
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // const user = {
+  //   email: "maria@mern.com",
+  //   password: "mm123456",
+  // };
+
   const initialValues = {
     email: "",
     password: "",
@@ -28,14 +45,23 @@ const Login = () => {
       email: values.email,
       password: values.password,
     };
-    
-    if(values.email===user.email && values.password===user.password){
-      setError('');
-      navigate('/');
-    }
-    else setError('Wrong Credentials!');
-    
+
+    const auth = getAuth();
+
+    signInWithEmailAndPassword(auth, userData.email, userData.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(error.message);
+      });
   };
+
   return (
     <>
       <section className="">
@@ -57,13 +83,18 @@ const Login = () => {
           <div className="login-section ">
             <div className="login-main bg-skyblue">
               <div className="google-login">
-                <div className="gicon">icon</div>
-                <div className="godesc">Login With Google</div>
+                {/* <div className="gicon"><FontAwesomeIcon icon={faGoogle} /></div> */}
+                <Link className="">
+                  <FaGoogle size={20} color="tomato" />
+                </Link>
+                <Link className="godesc">
+                  <div>Login With Google</div>{" "}
+                </Link>
               </div>
               <div className="top-border">
                 <hr />
               </div>
-              <div className="godesc text-danger">{error}</div>
+              {error && <div className="text-warning">{error}</div>}
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -72,40 +103,53 @@ const Login = () => {
                 {(props) => (
                   <Form>
                     <div className="mb-3">
-                      <label for="exampleInputEmail1" className="form-label">
+                      <label htmlForfor="email" className="form-label">
                         Email address
                       </label>
                       <input
                         type="email"
                         name="email"
-                        className={`form-control ${props.errors.email && 'is-invalid'}`}
+                        placeholder="type here..."
+                        className={`form-control ${
+                          props.errors.email && "is-invalid"
+                        }`}
                         value={props.values.email} //Onchange what is happening is binded with value
                         onChange={props.handleChange}
                         id="email"
                         aria-describedby="emailHelp"
                       />
-                      <div className="invalid-feedback text-warning">{props.errors.email}</div>
-
-                      {/* <div id="emailHelp" className="form-text">
-                        We'll never share your email with anyone else.
-                      </div> */}
+                      {props.errors.email && (
+                        <div
+                          id="email"
+                          className=" invalid-feedback text-danger"
+                        >
+                          {props.errors.email}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
-                      <label for="exampleInputPassword1" className="form-label">
+                      <label htmlForfor="password" className="form-label">
                         Password
                       </label>
                       <input
                         type="password"
                         name="password"
                         id="password"
+                        placeholder="type here..."
                         value={props.values.password} //Onchange what is happening is binded with value
                         onChange={props.handleChange}
                         className={`form-control ${
                           props.errors.password && "is-invalid"
                         }`}
                       />
-                                    <div className="invalid-feedback text-warning">{props.errors.password}</div>
-
+                      {props.errors.password && (
+                        <div
+                          id="password"
+                          className=" invalid-feedback text-danger"
+                        >
+                          {props.errors.password}
+                        </div>
+                      )}
                     </div>
                     <div className="form-check">
                       <input
@@ -118,12 +162,12 @@ const Login = () => {
                       </label>
                     </div>
                     <div className=" mb-3">
-                      <Link className="forgot-pass" to="/">
+                      <Link className="forgot-pass" to="/register">
                         Forgot Password?
                       </Link>
                     </div>
 
-                  <button className="login-btn" type="submit">
+                    <button className="login-btn" type="submit">
                       Login
                     </button>
 

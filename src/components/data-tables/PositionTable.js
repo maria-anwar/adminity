@@ -107,7 +107,7 @@ const PositionTable = ()=>{
         <>
         <TitleBar title={"Positions"} count={"47"} addbtn={"Add Position"} url={'/position/create'}/>
       <section className="py-3 tableparent">
-        <table className="mytable">
+        <table className="rounded-table">
         <thead>
 
             <tr>

@@ -108,7 +108,7 @@ const LocationTable = ()=>{
         <>
         <TitleBar title={"Locations"} count={"47"} addbtn={"Add Location"} url={'/location/create'}/>
       <section className="py-3 tableparent">
-        <table className="mytable">
+        <table className="rounded-table">
         <thead>
 
             <tr>

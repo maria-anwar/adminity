@@ -21,7 +21,7 @@ code {
   --bg-green: #5FCF5C; 
   --bs-sky: #F4F6F8;
   --dark-gray: #8D8888;
-
+  --bs-greater-than: #C2BCBC;
   
   --bs-breakpoint-xs: 0;
   --bs-breakpoint-sm: 576px;
@@ -41,7 +41,8 @@ code {
   background-color: var(--bs-sky);
 }
 .gray{
-  color: #666262;
+  color: var(--bs-gray);
+  
 }
 .darkgray{
   color:var(--dark-gray);
