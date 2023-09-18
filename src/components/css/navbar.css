@@ -11,9 +11,6 @@
 .nav-link {
     display: block;
     padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
-    /* font-size: var(--bs-nav-link-font-size); */
-    /* font-weight: var(--bs-nav-link-font-weight); */
-    /* color: var(--bs-nav-link-color); */
     text-decoration: none;
     background: 0 0;
     border: 0;
@@ -21,19 +18,12 @@
     color: #FFFFFF !important;
     font-weight: 400 !important;
     font-size: 18px !important;
-    
-    
 }
-.nav-item{
-    
-}
+
 .nav-card{
     border-radius: 20px;
-    /* background-color: #242B32; */
     padding: 10px;;
     display: flex;
-    /* flex-direction: column;
-    align-items: center; */   
 }
 .nav-card .navcard-img{
     border-radius: 50px;

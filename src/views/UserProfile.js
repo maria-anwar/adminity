@@ -11,51 +11,55 @@ const UserProfile = () => {
   return (
     <>
       <AddNew />
-
       <section className="py-3 ">
-        <div className="bg-gray">
-          <nav className="navbar navbar-expand-lg navbar-light ">
-            <div className="container-fluid">
-              <a className="navbar-brand" href="#">
-                Personel
-              </a>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <a
-                      className="nav-link txt-clr active"
-                      aria-current="page"
-                      href="#"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li className="nav-item text-block">
-                    <a className="nav-link" href="#">
-                      Features
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Pricing
-                    </a>
-                  </li>
-                </ul>
-              </div>
+      <nav
+          class="navbar navbar-expand-lg bg-gray py-3"
+          data-bs-theme="light"
+        >
+          <div class="container-fluid ">
+            {/* <a class="navbar-brand" href="#">
+              Navbar
+            </a> */}
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarColor03"
+              aria-controls="navbarColor03"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="mynav-link active " href="#">
+                    Home
+                    <span class="visually-hidden">(current)</span>
+                  </a>
+                </li>
+                <li class=" nav-item">
+                  <a class="mynav-link" href="#">
+                    Features
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="mynav-link" href="#">
+                    Pricing
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="mynav-link" href="#">
+                    About
+                  </a>
+                </li>
+               
+              </ul>
             </div>
-          </nav>
-
+          </div>
+        </nav>
+        <div className="bg-gray">
           <div className="d-flex justify-content-center text-align-center">
             <Link to="/profile">
               <img
