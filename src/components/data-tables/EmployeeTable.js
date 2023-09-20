@@ -114,7 +114,7 @@ const EmployeeTable = () => {
       />
       <section className="py-3 tableparent">
        
-          <table className="rounded-table" >
+          <table className="rounded-table pb-3" >
             <thead>
               <tr className="row-pd">
                 <th>
@@ -153,24 +153,6 @@ const EmployeeTable = () => {
               </tbody>
             ))}
           </table>
-        
-        <table className="rounded-table">
-      <thead>
-        <tr>
-          <th>Header 1</th>
-          <th>Header 2</th>
-          <th>Header 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        {/* Add more rows and data as needed */}
-      </tbody>
-    </table>
       </section>
     </>
   );
