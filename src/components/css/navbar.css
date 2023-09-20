@@ -24,6 +24,7 @@
     border-radius: 20px;
     padding: 10px;;
     display: flex;
+
 }
 .nav-card .navcard-img{
     border-radius: 50px;
@@ -78,4 +79,20 @@ ul li:hover{
     justify-content: space-between;
     
     /* padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x); */
+}
+                
+.dropdown-menu{
+    background-color: rgb(255, 253, 253) !important;
+    
+}
+.dropdown-item{
+    color: black !important;
+    background-color: inherit;
+
+}
+.dropdown-item:hover{
+    color: #FFFFFF;
+}
+.dropdown-item:hover{
+    background-color: rgb(97, 96, 96) ;
 }

@@ -82,29 +82,72 @@ const Navbar = () => {
               </li> */}
             </ul>
             <div className="nav-card">
-              <div>
-              <Link to="/profile">
-                <img
-                  className="navcard-img"
-                  src="https://images.business.com/app/uploads/2022/03/23021439/freelancer_Prostock-Studio_getty-3.jpg"
-                  alt="user-profile"
-                  width="50px"
-                  height="50px"
-                />
-              </Link>
-              </div>
+              
+                <Link to="/profile">
+                  <img
+                    className="navcard-img"
+                    src="https://images.business.com/app/uploads/2022/03/23021439/freelancer_Prostock-Studio_getty-3.jpg"
+                    alt="user-profile"
+                    width="50px"
+                    height="50px"
+                  />
+                </Link>
+                <div className="dropdown">
+
+               <Link 
+                  to="/profile"
+
+                  className=""
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{textDecoration:'none'}}
+                  >
+
+                <div className="d-flex">
               <div className="flex-column tmini-cont">
                 <h6 className="acc-title">Maria Anwar</h6>
                 <span className="ceoclr">Malhoc Inc.</span>
               </div>
-              {/* <FontAwesomeIcon className="border" icon={faAngleDown} /> */}
-              <Link className="pt-3 ms-3" to="/profile">           
-                <FontAwesomeIcon className="dropdown-icon" icon={faAngleDown} />
-              </Link>
+              <div className="pt-3 ms-3 ">
+                
+                  <FontAwesomeIcon
+                    className="dropdown-icon "
+                    icon={faAngleDown}
+                    id="dropdownMenuButton1"
+                  />
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a className="dropdown-item" href="/profile">
+                      view profile
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Edit Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      settings
+                    </a>
+                  </li>
+                </ul>
+               
+              </div>
+                </div>
+               </Link>
+                </div>
+             
+
+             
             </div>
           </div>
         </div>
       </nav>
+
+     
     </>
   );
 };
