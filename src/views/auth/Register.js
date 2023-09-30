@@ -7,7 +7,8 @@ import * as Yup from "yup"; //For Validation Schema
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { FaGoogle } from "react-icons/fa";
-
+import Gvector from "../../assets/images/Gvector.svg";
+import logimg from "../../assets/images/login-img.png";
 const Register = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -54,108 +55,73 @@ const Register = () => {
         const user = userCredential.user;
         console.log(user);
         navigate("/");
-        // ...
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setError(error.message);
 
-        // ..
+        
       });
   };
 
   return (
     <>
-      <section className="">
-        <div className="login-Parent">
-          <div className="side-sec bg-blue">
-            <div className="titlesec">Adminity</div>
-            <div className="desc-sec">Where Great Things Happen</div>
-            <div className="side-img">
-              <img
-                className=""
-                src={process.env.PUBLIC_URL + "assets/images/login-img.png"}
-                alt="login-img"
-                height="450px"
-              />
+      
+      <section className="md:flex h-screen">
+        <div className="xxs:hidden md:block w-2/5 flex flex-col justify-between bg-[#1997BE] px-4 pt-3 md:py-0 border h-screen">
+          <div className="flex flex-col gap-5">
+            <h2 className=" text-white font-semibold text-3xl font-Inter">
+              Adminity
+            </h2>
+            <div className=" text-white font-sm text-xl">
+              Where Great Things Happen
             </div>
           </div>
-          {/* ---Login Card----- */}
-          {/* <div className="login-title">Login</div> */}
-          <div className="login-section">
-            <div className="login-main bg-skyblue">
-              <div className="google-login">
-                {/* <div className="gicon text-warning">G</div> */}
-                <Link className="" to="/register">
-                  <FaGoogle size={20} color="tomato" />
-                </Link>
-                <Link to="/register" className="godesc">
-                  <div>Sign up With Google</div>
-                </Link>
-              </div>
-              <div className="top-border">
-                <hr />
-              </div>
-              {error && <div className="text-warning">{error}</div>}
+          <img src={logimg} alt="login-image" className="bg-contain" />
+        </div>
 
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-              >
-                {(props) => (
-                  <Form>
-                    {/* <div className="mb-2">
-                      <label htmlFor="cname" className="form-label">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        name="cname"
-                        className={`form-control ${
-                          props.errors.cname && "is-invalid"
-                        }`}
-                        id="cname"
-                        placeholder="your name.."
-                        // aria-describedby="emailHelp"
-                        value={props.values.cname} //Onchange what is happening is binded with value
-                        onChange={props.handleChange}
-                      />
+        {/*-------Login Card----*/}
 
-                      {props.errors.cname ? (
-                        <div
-                          id="cname"
-                          className=" invalid-feedback text-danger"
-                        >
-                          {props.errors.cname}
-                        </div>
-                      ) : (
-                        <div id="emailHelp" className="form-text">
-                          We'll never share your information with anyone else.
-                        </div>
-                      )}
-                    </div> */}
-                    <div className="mb-3">
-                      <label htmlFor="email" className="form-label">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        className={`form-control ${
-                          props.errors.email && "is-invalid"
-                        }`}
-                        id="email"
-                        aria-describedby="emailHelp"
-                        placeholder="your email.."
-                        value={props.values.email} //Onchange what is happening is binded with value
-                        onChange={props.handleChange}
-                      />
-                      {props.errors.email ? (
+        <div className="shadow-md xxs:px-5 xxs:py-10  xs:px-10  xs:py-12 sm:px-16 md:px-20 md:w-full  lg:px-28 lg:py-24 xl:px-48 xl:pt-20 h-full">
+          <div className="bg-[#F4F6F8] flex flex-col xxs:px-5 py-5 gap-2 rounded-md xs:px-10 border sm:px-16 md:px-28">
+            <div className="bg-white flex flex-row justify-center items-center gap-2 py-2 px-4 border border-[#8D888894] rounded-md ">
+              <img src={Gvector} alt="google-icon" className="w-4 h-4" />
+              <div className=" font-Inter font-semibold text-xs  text-[#666262] ">
+              Sign up using Google
+              </div>
+            </div>
+            <hr />
+            {error && <div className="text-warning">{error}</div>}
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={onSubmit}
+            >
+              {(props) => (
+                <Form className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1">
+                    <label
+                      htmlForfor="email"
+                      className="text-[#3C4349] text-medium font-Inter font-medium"
+                    >
+                      Email
+                    </label>
+
+                    <input
+                      className={`appearance-none border-1 border-[#cac8c894] rounded-sm shadow-md  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${props.errors.email && "border-red-500"}`}
+                      id="email"
+                      value={props.values.email}
+                      name="email"
+                      type="email"
+                      placeholder="jhon@gmail.com"
+                      onChange={props.handleChange}
+                    />
+                     {props.errors.email ? (
                         <div
                           id="email"
-                          className=" invalid-feedback text-danger"
+                          className="invalid-feedback text-danger"
                         >
                           {props.errors.email}
                         </div>
@@ -164,71 +130,49 @@ const Register = () => {
                           We'll never share your information with anyone else.
                         </div>
                       )}
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="password" className="form-label">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        name="password"
-                        className={`form-control ${
-                          props.errors.email && "is-invalid"
-                        }`}
-                        id="password"
-                        placeholder="your password.."
-                        value={props.values.password} //Onchange what is happening is binded with value
-                        onChange={props.handleChange}
-                      />
-                      {props.errors.password ? (
+                  </div>
+                  <div className="flex flex-col gap-1 mt-2">
+                    <label
+                      htmlForfor="email"
+                      className="text-[#3C4349] text-medium font-Inter font-medium"
+                    >
+                      Password
+                    </label>
+                    <input
+                      className={`appearance-none border-1 border-[#cac8c894] rounded-sm shadow-md py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
+                        props.errors.password && "border-red-500"
+                      }`}
+                      id="password"
+                      name="password"
+                      type="password"
+                      value={props.values.password}
+                      onChange={props.handleChange}
+                      placeholder="******************"
+                    />
+                     {props.errors.password ? (
                         <div
-                          id="cname"
+                          id="password"
                           className=" invalid-feedback text-danger"
                         >
                           {props.errors.password}
                         </div>
                       ) : (
-                        <div id="emailHelp" className="form-text">
+                        <div id="password" className="form-text">
                           We'll never share your information with anyone else.
                         </div>
                       )}
-                    </div>
-                    {/* <div className="mb-3">
-                      <label htmlFor="confPassword" className="form-label">
-                        Confirm Password
-                      </label>
-                      <input
-                        type="password"
-                        name="confPassword"
-                        className={`form-control ${
-                    props.errors.email && "is-invalid"
-                  }`}
-                        id="confPassword"
-                        placeholder="your password.."
-                        value={props.values.confPassword} //Onchange what is happening is binded with value
-                        onChange={props.handleChange}
-                      />
-                      {props.errors.confPassword ? (
-                        <div
-                          id="cname"
-                          className=" invalid-feedback text-danger"
-                        >
-                          {props.errors.confPassword}
-                        </div>
-                      ) : (
-                        <div id="emailHelp" className="form-text">
-                          We'll never share your information with anyone else.
-                        </div>
-                      )}
-                    </div> */}
-
-                    <button className="login-btn" type="submit">
-                      Sign up
-                    </button>
-                  </Form>
-                )}
-              </Formik>
-            </div>
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="bg-[#1997BE] mt-2 py-2 rounded-lg text-white font-Inter font-semibold "
+                  >
+                    Sign Up
+                  </button>
+                </Form>
+              )}
+            </Formik>
+            {/* <div>Check box</div> */}
           </div>
         </div>
       </section>
