@@ -10,7 +10,7 @@ const AddEmployee = () => {
   return (
     <>
       <AddNew />
-      <section className="py-3">
+      {/* <section className="py-3">
         <div className="form-parent">
           <form className="addform">
             <div className="row">
@@ -24,7 +24,7 @@ const AddEmployee = () => {
             <button className="mybtn">Save</button>
           </form>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

@@ -21,6 +21,7 @@ import MyNav from "./components/MyNav";
 import MyNav2 from "./components/MyNav2";
 import Table from "./components/Table";
 import TitleBar from "./components/TitleBar";
+import AddNew from "./components/AddNew";
 
 const AppRoutes = () => {
     return(
@@ -43,7 +44,7 @@ const AppRoutes = () => {
                         <Route path="/locations" element={<LocationTable />}/>
                         <Route path="/profile" element={<UserProfile />}/>
                         <Route path="/titlebar" element={<TitleBar />}/>
-                        <Route path="/add" element={<TitleBar />}/>
+                        <Route path="/addnew" element={<AddNew />}/>
                     </Route>
                     <Route path="/login" element={<Login />}/>
                     <Route path="/register" element={<Register />}/>

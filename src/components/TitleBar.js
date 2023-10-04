@@ -12,7 +12,7 @@ const TitleBar = (props) => {
     <>
      
       <section className="pt-2 xs:pt-3 sm:pt-4">
-        <div className=" w-full px-4 xs:px-2 py-2 sm:py-3 flex justify-between items-center  bg-[#F2F5F7] rounded-md shadow-md">
+        <div className=" w-full px-4  py-2 sm:py-3 lg:py-4 flex justify-between items-center  bg-[#F2F5F7] rounded-md shadow-md">
           <div className="text-[#FC8955]  xxs:text-lg xs:text-base lg:text-lg xl:text-xl font-medium flex items-center">
             <span className="xxs:hidden xs:block">{props.title}</span> ({props.count})
           </div>
