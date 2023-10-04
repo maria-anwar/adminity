@@ -2,20 +2,22 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     screens: {
-      'xxs': '375px',
-      'xs':  '550px',
-      'sm': '640px', 
+      'xxs':'100px',
+      'xs': '375px',
+      'sm':  '550px',
+      'md': '640px', 
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      'lg': '768px',
       // => @media (min-width: 768px) { ... }
 
-      'lg': '1024px',
-      'xl': '1221px',
-      '2xl': '1536px',
+      'xl': '1024px',
+      '2xl': '1221px',
+      '3xl': '1536px',
           
     },
     extend: {},

@@ -1,9 +1,9 @@
-import React from "react";
-import "../css/dataTable.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import TitleBar from "../TitleBar";
 
 const EmployeeTable = () => {
+  
   const [data, setData] = useState([
     {
       id: 1,
@@ -97,6 +97,7 @@ const EmployeeTable = () => {
     },
     // Add more data rows as needed
   ]);
+
   const handleCheckboxChange = (id) => {
     setData(
       data.map((item) =>
@@ -104,55 +105,90 @@ const EmployeeTable = () => {
       )
     );
   };
+
   return (
     <>
-      <TitleBar
+      <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
+      
+        <TitleBar
         title={"Employees"}
         count={"50"}
         addbtn={"Add Employee"}
         url={"/employee/create"}
       />
-      <section className="py-3 tableparent">
-       
-          <table className="rounded-table pb-3" >
-            <thead>
-              <tr className="row-pd">
-                <th>
+      <section className="pt-3 md:pt-4">
+        <div className="relative overflow-x-auto shadow-md xxs:rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
                   <input type="checkbox" />
                 </th>
-                <th scope="col">Name</th>
-                <th scope="col">Employee ID</th>
-                <th scope="col">Position</th>
-                <th scope="col">Location</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <th scope="col" className="px-6 py-3">
+                  Name
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Employee ID
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Position
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Location
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Email
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Phone
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Status
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Action
+                </th>
+                {/* <th scope="col" className="px-6 py-3">
+                  <span className="sr-only">Edit</span>
+                </th> */}
               </tr>
             </thead>
-
-            {data.map((item) => (
-              <tbody>
-                <tr>
-                  <td>
+            <tbody>
+              {data.map((item) => (
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <td className="px-6 py-4">
                     <input
                       type="checkbox"
                       checked={item.selected || false}
                       onChange={() => handleCheckboxChange(item.id)}
                     />
                   </td>
-                  <td>{item.name}</td>
-                  <td>{item.employeeId}</td>
-                  <td>{item.position}</td>
-                  <td>{item.location}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phone}</td>
-                  <td>{item.status}</td>
-                  <td>....</td>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {item.name}
+                  </th>
+                  <td className="px-6 py-4">{item.employeeId}</td>
+                  <td className="px-6 py-4">{item.position}</td>
+                  <td className="px-6 py-4">{item.location}</td>
+                  <td className="px-6 py-4">{item.email}</td>
+                  <td className="px-6 py-4">{item.phone}</td>
+                  <td className="px-6 py-4">{item.status}</td>
+                  <td className="px-6 py-4 text-left">
+                    <a
+                      href="#"
+                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      Edit
+                    </a>
+                  </td>
                 </tr>
-              </tbody>
-            ))}
+              ))}
+            </tbody>
           </table>
+        </div>
+      </section>      
       </section>
     </>
   );

@@ -13,10 +13,10 @@
     border-radius: 10px !important ;
    
   } */
-  table thead{
+   table thead{
     background-color: var(--blue-clr);
     padding : 50px 0px;
-    /* border: 1px solid saddlebrown; */
+   
   }
   table thead tr{
     padding-top: 40px;
@@ -35,20 +35,20 @@
   
   table thead tr:hover{ background-color:var(--blue-clr);}
   tr:hover {background-color: #c9edf8;}
-  
+   
   .rounded-table {
     border-collapse: collapse;
     width: 100%;
     background-color: var(--bg-lightgrey);
-    /* max-width: 600px;  */
-    margin: 0 auto; /* Center the table on the page */
-    border-radius: 10px; /* Add border-radius to create rounded corners */
-    overflow: hidden; /* Hide overflow if content exceeds the rounded corners */
+    
+    margin: 0 auto; 
+    border-radius: 10px;
+    overflow: hidden;
     padding: 40px;
-  }
-  .rounded-table .row-pd{
+  } 
+  /* .rounded-table .row-pd{
       padding: 40px;
-  }
+  } */
   
   
   
