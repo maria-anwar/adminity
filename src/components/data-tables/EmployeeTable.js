@@ -114,7 +114,7 @@ const EmployeeTable = () => {
         title={"Employees"}
         count={"50"}
         addbtn={"Add Employee"}
-        url={"/employee/create"}
+        url={"/employees/create"}
       />
       <section className="pt-3 md:pt-4">
         <div className="relative overflow-x-auto shadow-md xxs:rounded-lg">

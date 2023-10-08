@@ -224,7 +224,7 @@ const Login = () => {
                 <Form className="flex flex-col gap-2">
                   <div className="flex flex-col gap-1">
                     <label
-                      htmlForfor="email"
+                      htmlFor="email"
                       className="text-[#3C4349] text-medium font-Inter font-medium"
                     >
                       Email
@@ -250,7 +250,7 @@ const Login = () => {
                   </div>
                   <div className="flex flex-col gap-1 mt-2">
                     <label
-                      htmlForfor="email"
+                      htmlFor="email"
                       className="text-[#3C4349] text-medium font-Inter font-medium"
                     >
                       Password
@@ -264,7 +264,7 @@ const Login = () => {
                       type="password"
                       value={props.values.password}
                       onChange={props.handleChange}
-                      placeholder="******************"
+                      placeholder=""
                     />
                     {props.errors.password && (
                         <div

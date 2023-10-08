@@ -37,9 +37,9 @@ const AppRoutes = () => {
                         <Route path="/reports" element={<Reports />}/>
                         <Route path="/tasks" element={<Tasks />}/>
                         <Route path="/position" element={<AddPosition />}/>
-                        <Route path="/employee/create" element={<AddEmployee />}/>
-                        <Route path="/position/create" element={<AddPositionForm />}/>
-                        <Route path="/location/create" element={<AddLocation />}/>
+                        <Route path="/employees/create" element={<AddEmployee />}/>
+                        <Route path="/positions/create" element={<AddPositionForm />}/>
+                        <Route path="/locations/create" element={<AddLocation />}/>
                         <Route path="/positions" element={<PositionTable />}/>
                         <Route path="/locations" element={<LocationTable />}/>
                         <Route path="/profile" element={<UserProfile />}/>
