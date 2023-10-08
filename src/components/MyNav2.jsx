@@ -28,7 +28,7 @@ const MyNav2 = () => {
                 style={{ marginBottom: "0", paddingLeft: "0" }}
               >
                 <li
-                  className={`hover:bg-[#2DC5F5] py-3 px-3 ${
+                  className={`hover:bg-[#2DC5F5] py-4 px-3 ${
                     location.pathname === "/" ? "bg-[#2DC5F5]" : ""
                   }`}
                 >
@@ -41,7 +41,7 @@ const MyNav2 = () => {
                   </NavLink>
                 </li>
                 <li
-                  className={`hover:bg-[#2DC5F5] py-3 px-3 ${
+                  className={`hover:bg-[#2DC5F5] py-4 px-3 ${
                     location.pathname === "/schedule" ? "bg-[#2DC5F5]" : ""
                   }`}
                 >
@@ -54,7 +54,7 @@ const MyNav2 = () => {
                   </NavLink>
                 </li>
                 <li
-                  className={`hover:bg-[#2DC5F5] py-3 px-3 ${
+                  className={`hover:bg-[#2DC5F5] py-4 px-3 ${
                     location.pathname === "/timesheet" ? "bg-[#2DC5F5]" : ""
                   }`}
                 >
@@ -67,7 +67,7 @@ const MyNav2 = () => {
                   </NavLink>
                 </li>
                 <li
-                  className={`hover:bg-[#2DC5F5] py-3 px-3 ${
+                  className={`hover:bg-[#2DC5F5] py-4 px-3 ${
                     location.pathname === "/reports" ? "bg-[#2DC5F5]" : ""
                   }`}
                 >
@@ -80,7 +80,7 @@ const MyNav2 = () => {
                   </NavLink>
                 </li>
                 <li
-                  className={`hover:bg-[#2DC5F5] py-3 px-3 ${
+                  className={`hover:bg-[#2DC5F5] py-4 px-3 ${
                     location.pathname === "/tasks" ? "bg-[#2DC5F5]" : ""
                   }`}
                 >
