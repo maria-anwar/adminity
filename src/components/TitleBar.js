@@ -10,7 +10,6 @@ const TitleBar = (props) => {
   };
   return (
     <>
-     
       <section className="pt-2 xs:pt-3 sm:pt-4">
         <div className=" w-full px-4  py-2 sm:py-3 lg:py-4 flex justify-between items-center  bg-[#F2F5F7] rounded-md shadow-md">
           <div className="text-[#FC8955]  xxs:text-lg xs:text-base lg:text-lg xl:text-xl font-medium flex items-center">
@@ -21,7 +20,7 @@ const TitleBar = (props) => {
           <div className="xxs:hidden sm:block h-full">
             <div className=" w-52 md:w-60 lg:w-[17rem] xl:w-80 sm:px-2 sm:py-0.5 md:py-1 flex items-center rounded-sm bg-transparent border border-gray-300">
               <input 
-                className="text-sm text-gray-900 bg-transparent w-full"
+                className="text-sm text-gray-900 bg-transparent w-full focus:outline-none"
                 type="text" 
                 placeholder="Search"
               />
