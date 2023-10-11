@@ -1,25 +1,20 @@
 import React from "react";
-import AddNew from "../components/AddNew";
-import "./css/AddForms.css";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import NameField from "../components/inputfields/NameField";
-import EmailField from "../components/inputfields/EmailField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
-import { NavLink, Link } from "react-router-dom";
+import ProfileBar from "../components/ProfileBar";
 
 const UserProfile = () => {
   return (
     <>
-      <AddNew />
+      {/* <AddNew />
       <section className="py-3 ">
       <nav
           class="navbar navbar-expand-lg bg-gray py-3"
           data-bs-theme="light"
         >
           <div class="container-fluid ">
-            {/* <a class="navbar-brand" href="#">
-              Navbar
-            </a> */}
             <button
               class="navbar-toggler"
               type="button"
@@ -82,6 +77,29 @@ const UserProfile = () => {
             </div>
             <button className="mybtn">Save</button>
           </form>
+        </div>
+      </section> */}
+
+      <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
+        <ProfileBar title={"Employee"} name={"Jhon Morris"} />
+        <div className="bg-[#F2F5F7] flex flex-col gap-4 mt-3 xs:mt-3 md:mt-4 py-2 md:py-5 lg:py-6 rounded-md shadow-md">
+          <nav className="flex px-1 border">
+            <ul className="flex flex-row items-center">
+              <li className="hover:border-bottom py-2 px-3">
+                <NavLink
+                  className="text-[#454343] hover:text-[#1997BE] text-xs xs:text-sm sm:text-base md:text-lg xl:text-xl font-semibold xl:font-bold "
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                >
+                  PERSONAL
+                </NavLink>
+              </li>
+              
+            </ul>
+          </nav>
+          <div className="xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 ">
+            profile Form
+          </div>
         </div>
       </section>
     </>

@@ -112,7 +112,7 @@ const PositionTable = () => {
           url={"/positions/create"}
         />
         <section className="pt-3 md:pt-4">
-          <div className="relative overflow-x-auto shadow-md xxs:rounded-lg">
+          <div className="relative overflow-x-auto shadow-md xxs:rounded-lg border">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -120,26 +120,12 @@ const PositionTable = () => {
                     <input type="checkbox" />
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Name
+                    Postion Title
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Employee ID
+                    No. of employees
                   </th>
-                  <th scope="col" className="px-6 py-3">
-                    Position
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Location
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Email
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Phone
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Status
-                  </th>
+
                   <th scope="col" className="px-6 py-3">
                     Action
                   </th>
@@ -165,11 +151,7 @@ const PositionTable = () => {
                       {item.name}
                     </th>
                     <td className="px-6 py-4">{item.employeeId}</td>
-                    <td className="px-6 py-4">{item.position}</td>
-                    <td className="px-6 py-4">{item.location}</td>
-                    <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">{item.phone}</td>
-                    <td className="px-6 py-4">{item.status}</td>
+
                     <td className="px-6 py-4 text-left">
                       <a
                         href="#"
@@ -178,6 +160,68 @@ const PositionTable = () => {
                         Edit
                       </a>
                     </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="pt-3 md:pt-4">
+          <div className="relative overflow-x-auto shadow-md xxs:rounded-lg border">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] dark:bg-gray-700 dark:text-gray-400">
+                <tr className="flex justify-between">
+                <div className="flex">
+                  <th scope="col" className="px-6 py-3">
+                    <input type="checkbox" />
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Postion Title
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    No. of employees
+                  </th>
+                </div>
+
+                  <th scope="col" className="px-6 py-3">
+                    Action
+                  </th>
+                  {/* <th scope="col" className="px-6 py-3">
+                  <span className="sr-only">Edit</span>
+                </th> */}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item) => (
+                  <tr className="flex justify-between bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <div className="flex justify-between">
+                    <td className="px-6 py-4">
+                      <input
+                        type="checkbox"
+                        checked={item.selected || false}
+                        onChange={() => handleCheckboxChange(item.id)}
+                      />
+                    </td>
+                    {/* <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {item.name}
+                    </th> */}
+                    <td className="px-6 py-4">{item.name}</td>
+                    <td className="px-6 sm:px-14 py-4">{item.employeeId}</td>
+                    </div>
+
+                    <td className="px-6 py-4 text-left">
+                      <a
+                        href="#"
+                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        Edit
+                      </a>
+                    </td>
+
                   </tr>
                 ))}
               </tbody>

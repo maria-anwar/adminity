@@ -5,7 +5,6 @@ import AddNew from "../components/AddNew";
 import { Formik, Form } from "formik";
 import * as Yup from "yup"; //For Validation Schema
 import NameField from "../components/inputfields/NameField";
-import EmailField from "../components/inputfields/EmailField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
 import SimpleField from "../components/inputfields/SimpleField";
@@ -32,7 +31,7 @@ const AddEmployee = () => {
     email: Yup.string().email().required("Email is required"),
     empId: Yup.string().required("Employee Id is required"),
     phone: Yup.string().required("Phone number is required"),
-    countryCode: Yup.string().required("country code is required"),
+    countryCode: Yup.string().required("please select country code*"),
     timezone: Yup.string().required("Timezone is required"),
     // password: Yup.string().min(8).required("Password is required"),
   });
@@ -92,6 +91,8 @@ const AddEmployee = () => {
                   lnamevalue={props.values.lname}
                   fnameErrors={props.errors.fname}
                   lnameErrors={props.errors.lname}
+                  fnplaceholder={"Nick"}
+                  lnplaceholder={"Morris"} 
                   onChange={props.handleChange}
                 />
                 <SimpleField
@@ -102,6 +103,7 @@ const AddEmployee = () => {
                   name={"email"}
                   id={"email"}
                   type={"email"}
+                  placeholder={"morris@gmail.com"}
                 />
                 <SimpleField
                   title={"Employee ID"}
@@ -111,6 +113,7 @@ const AddEmployee = () => {
                   name={"empId"}
                   id={"empId"}
                   type={"text"}
+                  placeholder={"emp1234"}
                 />
                 <PhoneField
                   value={props.values.phone}
@@ -118,6 +121,7 @@ const AddEmployee = () => {
                   onChange={props.handleChange}
                   codeErrors={props.errors.countryCode}
                   phoneErrors={props.errors.phone}
+                  placeholder={"123456789"}
                 />
                 <DropdownField
                   title={"Timezone"}

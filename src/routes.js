@@ -22,6 +22,7 @@ import MyNav2 from "./components/MyNav2";
 import Table from "./components/Table";
 import TitleBar from "./components/TitleBar";
 import AddNew from "./components/AddNew";
+import ProfileBar from "./components/ProfileBar";
 
 const AppRoutes = () => {
     return(
@@ -45,6 +46,8 @@ const AppRoutes = () => {
                         <Route path="/profile" element={<UserProfile />}/>
                         <Route path="/titlebar" element={<TitleBar />}/>
                         <Route path="/addnew" element={<AddNew />}/>
+                        <Route path="/profilebar" element={<ProfileBar />}/>
+
                     </Route>
                     <Route path="/login" element={<Login />}/>
                     <Route path="/register" element={<Register />}/>

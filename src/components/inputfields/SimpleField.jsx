@@ -3,7 +3,7 @@ import React from 'react'
 const SimpleField = (props) => {
   return (
    <>
-    <div className="flex flex-col gap-1 lg:gap-1.5 w-full">
+    <div className="flex flex-col gap-1 lg:gap-1.5  w-full ">
                   <label
                     htmlFor="email"
                     className="text-[#3C4349] text-sm  font-Inter font-medium"
@@ -17,7 +17,7 @@ const SimpleField = (props) => {
                     id={props.id}
                     value={props.value}
                     onChange={props.onChange}
-                    placeholder="jhon@gmail.com"
+                    placeholder={props.place}
                   />
                   {props.errors && (
                         <div

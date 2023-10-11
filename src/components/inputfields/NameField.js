@@ -19,7 +19,7 @@ const   NameField = (props)=>{
                   name="fname"
                   value={props.fnamevalue}
                   onChange={props.onChange}
-                  placeholder="first name"
+                  placeholder={props.fnplaceholder}
                 />
                 {props.fnameErrors && (
                         <div
@@ -45,7 +45,7 @@ const   NameField = (props)=>{
                   name="lname"
                   value={props.lnamevalue}
                   onChange={props.onChange}
-                  placeholder="last name"
+                  placeholder={props.lnplaceholder}
                 />
                 {props.lnameErrors && (
                         <div

@@ -122,25 +122,22 @@ const LocationTable = ()=>{
                   <input type="checkbox" />
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Name
+                 location Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Employee ID
+                  address
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Position
+                  contact name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Location
+                  contact number
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Email
+                  Timezone
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Phone
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Status
+                  No. of employees
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Action
@@ -171,7 +168,6 @@ const LocationTable = ()=>{
                   <td className="px-6 py-4">{item.location}</td>
                   <td className="px-6 py-4">{item.email}</td>
                   <td className="px-6 py-4">{item.phone}</td>
-                  <td className="px-6 py-4">{item.status}</td>
                   <td className="px-6 py-4 text-left">
                     <a
                       href="#"

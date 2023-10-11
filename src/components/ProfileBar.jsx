@@ -2,10 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaGreaterThan } from 'react-icons/fa';
 import { FaArrowLeft } from 'react-icons/fa';
-//import arrowleft from "../assets/images/arrowleft.png";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";arrowleft
-//import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
-const AddNew = (props) => {
+
+const ProfileBar = (props) => {
   return (
     <>
       <section className="pt-2 xs:pt-3 sm:pt-4">
@@ -13,7 +11,7 @@ const AddNew = (props) => {
           <div className=" text-black  flex justify-center items-center gap-0.5 text-sm  xs:text-base sm:text-lg lg:font-semibold font-bold xs:font-medium ">
            <div className="xxs:hidden xs:block">{props.title}</div>
            <FaGreaterThan className="xxs:hidden xs:block text-[#C2BCBC] text-xs"/>
-           <span className="text-[#FC8955]">Add New</span> 
+           <span className="text-[#1997BE]">{props.name}</span> 
           </div>
           <div className="flex gap-1.5 items-center bg-[#FC8955B3] border border-[#FC8955] px-2 xs:px-3 sm:px-4 xs:py-1.5 md:py-1.5 rounded-md ">
             <Link
@@ -32,4 +30,4 @@ const AddNew = (props) => {
     </>
   );
 };
-export default AddNew;
+export default ProfileBar;
