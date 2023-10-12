@@ -23,6 +23,11 @@ import Table from "./components/Table";
 import TitleBar from "./components/TitleBar";
 import AddNew from "./components/AddNew";
 import ProfileBar from "./components/ProfileBar";
+import ProfileLayout from "./layouts/ProfileLayout";
+import Personal from "./views/profile/Personal";
+import Work from "./views/profile/Work";
+import Documents from "./views/profile/Documents";
+import Unavailability from "./views/profile/Unavailability";
 
 const AppRoutes = () => {
     return(
@@ -49,6 +54,16 @@ const AppRoutes = () => {
                         <Route path="/profilebar" element={<ProfileBar />}/>
 
                     </Route>
+
+                    {/* Profile Routes */}
+                    <Route path="/profile" element={<ProfileLayout />}>
+                    <Route index element={<Personal />}/>  
+                    <Route path="/profile/work" element={<Work />}/>
+                    <Route path="/profile/documents" element={<Documents />}/>
+                    <Route path="/profile/unavailability" element={<Unavailability />}/>
+                    
+                    </Route>
+
                     <Route path="/login" element={<Login />}/>
                     <Route path="/register" element={<Register />}/>
                     <Route path="/mynav" element={<MyNav />}/>

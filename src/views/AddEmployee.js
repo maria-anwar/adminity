@@ -38,8 +38,8 @@ const AddEmployee = () => {
 
   const onSubmit = (values) => {
     let userData = {
-      lname: values.fname,
-      fname: values.lname,
+      fname: values.fname,
+      lname: values.lname,
       email: values.email,
       empId: values.empId,
       phone: values.phone,

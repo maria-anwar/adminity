@@ -87,14 +87,40 @@ const UserProfile = () => {
             <ul className="flex flex-row items-center">
               <li className="hover:border-bottom py-2 px-3">
                 <NavLink
-                  className="text-[#454343] hover:text-[#1997BE] text-xs xs:text-sm sm:text-base md:text-lg xl:text-xl font-semibold xl:font-bold "
+                  className="text-[#454343] hover:text-[#1997BE] text-xs xs:text-sm sm:text-base  font-semibold xl:font-bold "
                   to="/"
                   style={{ textDecoration: "none" }}
                 >
                   PERSONAL
                 </NavLink>
-              </li>
-              
+              </li> 
+              <li className="hover:border-bottom py-2 px-3">
+                <NavLink
+                  className="text-[#454343] hover:text-[#1997BE] text-xs xs:text-sm sm:text-base font-semibold xl:font-bold "
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                >
+                  WORK
+                </NavLink>
+              </li> 
+              <li className="hover:border-bottom py-2 px-3">
+                <NavLink
+                  className="text-[#454343] hover:text-[#1997BE] text-xs xs:text-sm sm:text-base font-semibold xl:font-bold "
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                >
+                  DOCUMENT
+                </NavLink>
+              </li> 
+              <li className="hover:border-bottom py-2 px-3">
+                <NavLink
+                  className="text-[#454343] hover:text-[#1997BE] text-xs xs:text-sm sm:text-base font-semibold xl:font-bold "
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                >
+                  UNAVAILABILITY
+                </NavLink>
+              </li> 
             </ul>
           </nav>
           <div className="xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 ">

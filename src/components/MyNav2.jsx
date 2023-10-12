@@ -109,7 +109,7 @@ const MyNav2 = () => {
           </button>
         </nav>
         {isClicked ? (
-          <div className="xxs:block md:hidden absolute bg-[#1997BE] px-6 w-[55%] pb-2">
+          <div className="xxs:block md:hidden absolute bg-[#1997BE] px-6 w-[55%] pb-2 z-50 border">
             <ul
               className="flex xxs:flex-col gap-[3vh]"
               style={{ marginBottom: "0", paddingLeft: "0" }}

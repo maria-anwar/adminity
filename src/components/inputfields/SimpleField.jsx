@@ -17,7 +17,7 @@ const SimpleField = (props) => {
                     id={props.id}
                     value={props.value}
                     onChange={props.onChange}
-                    placeholder={props.place}
+                    placeholder={props.placeholder}
                   />
                   {props.errors && (
                         <div

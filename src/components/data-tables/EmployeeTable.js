@@ -118,8 +118,8 @@ const EmployeeTable = () => {
       />
       <section className="pt-3 md:pt-4">
         <div className="relative overflow-x-auto shadow-md xxs:rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] dark:bg-gray-700 dark:text-gray-400">
+          <table className="w-full text-sm text-left text-gray-500">
+            <thead className="text-xs text-gray-700 uppercase bg-[#1997BE]">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   <input type="checkbox" />
@@ -155,7 +155,7 @@ const EmployeeTable = () => {
             </thead>
             <tbody>
               {data.map((item) => (
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr className="bg-white border-b hover:bg-gray-5">
                   <td className="px-6 py-4">
                     <input
                       type="checkbox"
