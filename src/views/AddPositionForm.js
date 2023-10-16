@@ -155,63 +155,61 @@ const AddPositionForm = () => {
                     type={"text"}
                   />
                 </div>
-                
+
                 <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%] flex flex-col gap-3">
-                  <div className="flex flex-col xxs:gap-2 md:flex-row md:justify-between border ">
+                  <div className="flex flex-col xxs:gap-4 md:flex-row md:justify-between">
                     <div className=" text-[#3C4349] font-semibold text-sm">
                       What documents do you require for this position?
                     </div>
-                    <label className="inline-flex items-center cursor-pointer">
-                    <div
-                      className={`relative border ${
-                        isToggled ? "bg-blue-600" : "bg-gray-200"
-                      } rounded-full w-12 h-6 transition duration-300 ease-in-out`}
-                    >
-                      <div
-                        className={`absolute left-0 ${
-                          isToggled ? "translate-x-full" : "translate-x-0"
-                        } w-6 h-6 bg-white border-4 border-blue-600 rounded-full transition duration-300 ease-in-out transform ${
-                          isToggled ? "translate-x-full" : "translate-x-0"
-                        }`}
-                      >
-                        {isToggled ? (
-                          <FaToggleOn className="w-4 h-4 m-1 text-blue-600" />
-                        ) : (
-                          <FaToggleOff className="w-4 h-4 m-1 text-gray-500" />
-                        )}
-                      </div>
-                     
+                    <div>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          value=""
+                          class="sr-only peer"
+                          
+                        />
+                        <div class="w-11 h-6 bg-gray-200 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                        
+                      </label>
                     </div>
-                    </label>
+                    {/* Toggle functionality here */}
+
                    
                   </div>
                   <div className="flex gap-2 justify-between">
-                  <SingleField
-                    name={"addDoc"}
-                    id={"addDoc"}
-                    type={"text"}
-                    placeholder={"Name here"}
-                    value={props.values.addDoc}
-                  />
-                  <button className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md">
-                  <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center"> 
-                  <FontAwesomeIcon className="text-[#1997BE] font-semibold w-3 h-3" icon={faPlus} />
-                  </div>
-                   </button>
+                    <SingleField
+                      name={"addDoc"}
+                      id={"addDoc"}
+                      type={"text"}
+                      placeholder={"Name here"}
+                      value={props.values.addDoc}
+                    />
+                    <button className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md">
+                      <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">
+                        <FontAwesomeIcon
+                          className="text-[#1997BE] font-semibold w-3 h-3"
+                          icon={faPlus}
+                        />
+                      </div>
+                    </button>
                   </div>
                   <div className="flex gap-2 justify-between">
-                  <SingleField
-                    name={"addDoc"}
-                    id={"addDoc"}
-                    type={"text"}
-                    placeholder={"Name here"}
-                    value={props.values.addDoc}
-                  />
-                  <button className="bg-[#FF4242] flex justify-center items-center w-10 lg:w-11 rounded-md">
-                  <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center"> 
-                  <FontAwesomeIcon className="text-[#FF4242] font-semibold w-3 h-3" icon={faMinus} />
-                  </div>
-                   </button>
+                    <SingleField
+                      name={"addDoc"}
+                      id={"addDoc"}
+                      type={"text"}
+                      placeholder={"Name here"}
+                      value={props.values.addDoc}
+                    />
+                    <button className="bg-[#FF4242] flex justify-center items-center w-10 lg:w-11 rounded-md">
+                      <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">
+                        <FontAwesomeIcon
+                          className="text-[#FF4242] font-semibold w-3 h-3"
+                          icon={faMinus}
+                        />
+                      </div>
+                    </button>
                   </div>
                 </div>
 

@@ -27,17 +27,15 @@ const Register = () => {
   const auth = getAuth(app);
 
   const initialValues = {
-    //cname: "",
+  
     email: "",
     password: "",
-    //confPassword: "",
+    
   };
 
-  const validationSchema = Yup.object().shape({
-    //cname: Yup.string().required("Company name is required"),
+  const validationSchema = Yup.object().shape({ 
     email: Yup.string().email().required("Email is VERY required"),
     password: Yup.string().min(8).required("Password is required"),
-    //confpassword: Yup.string().min(8).required("Confirm your Password"),
   });
 
   const onSubmit = (values) => {

@@ -28,14 +28,17 @@ import Personal from "./views/profile/Personal";
 import Work from "./views/profile/Work";
 import Documents from "./views/profile/Documents";
 import Unavailability from "./views/profile/Unavailability";
+import Account from "./components/Account";
+import DashboardLayout from "./layouts/DashboardLayout";
+import GlobalLayout from "./layouts/GlobalLayout";
 
 const AppRoutes = () => {
     return(
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<HomeLayout />}>
-                        <Route index element={<Home />}/>                       
+                    <Route element={<HomeLayout />}>               
+                        <Route path="/" element={<Home />}/>                       
                         <Route path="/navbox" element={<Navbox />}/>
                         <Route path="/schedule" element={<Schedule />}/>
                         <Route path="/employees" element={<EmployeeTable />}/>
@@ -52,9 +55,12 @@ const AppRoutes = () => {
                         <Route path="/titlebar" element={<TitleBar />}/>
                         <Route path="/addnew" element={<AddNew />}/>
                         <Route path="/profilebar" element={<ProfileBar />}/>
+                        <Route path="/account" element={<Account />}/>
 
                     </Route>
+                    <Route path="/home" element={<GlobalLayout />}>
 
+                    </Route>
                     {/* Profile Routes */}
                     <Route path="/profile" element={<ProfileLayout />}>
                     <Route index element={<Personal />}/>  
