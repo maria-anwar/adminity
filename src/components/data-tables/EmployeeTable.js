@@ -155,7 +155,7 @@ const EmployeeTable = () => {
             </thead>
             <tbody>
               {data.map((item) => (
-                <tr className="bg-white border-b hover:bg-gray-5">
+                <tr className="bg-white border-b hover:bg-blue-100">
                   <td className="px-6 py-4">
                     <input
                       type="checkbox"
@@ -165,7 +165,7 @@ const EmployeeTable = () => {
                   </td>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >
                     {item.name}
                   </th>

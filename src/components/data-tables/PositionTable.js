@@ -113,8 +113,8 @@ const PositionTable = () => {
         />
         <section className="pt-3 md:pt-4">
           <div className="relative overflow-x-auto shadow-md xxs:rounded-lg border">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] ">
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     <input type="checkbox" />
@@ -136,7 +136,7 @@ const PositionTable = () => {
               </thead>
               <tbody>
                 {data.map((item) => (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <tr className="bg-white border-b hover:bg-blue-100">
                     <td className="px-6 py-4">
                       <input
                         type="checkbox"
@@ -167,7 +167,7 @@ const PositionTable = () => {
           </div>
         </section>
 
-        <section className="pt-3 md:pt-4">
+        {/* <section className="pt-3 md:pt-4">
           <div className="relative overflow-x-auto shadow-md xxs:rounded-lg border">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] dark:bg-gray-700 dark:text-gray-400">
@@ -187,14 +187,12 @@ const PositionTable = () => {
                   <th scope="col" className="px-6 py-3">
                     Action
                   </th>
-                  {/* <th scope="col" className="px-6 py-3">
-                  <span className="sr-only">Edit</span>
-                </th> */}
+                  
                 </tr>
               </thead>
               <tbody>
                 {data.map((item) => (
-                  <tr className="flex justify-between bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <tr className="flex justify-between bg-white border-b  hover:bg-blue-100">
                     <div className="flex justify-between">
                     <td className="px-6 py-4">
                       <input
@@ -203,12 +201,7 @@ const PositionTable = () => {
                         onChange={() => handleCheckboxChange(item.id)}
                       />
                     </td>
-                    {/* <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {item.name}
-                    </th> */}
+                    
                     <td className="px-6 py-4">{item.name}</td>
                     <td className="px-6 sm:px-14 py-4">{item.employeeId}</td>
                     </div>
@@ -227,7 +220,7 @@ const PositionTable = () => {
               </tbody>
             </table>
           </div>
-        </section>
+        </section> */}
       </section>
     </>
   );
