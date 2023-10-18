@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import profile from "../assets/images/profile.png";
 import { MdMenu } from "react-icons/md";
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+//import { FaArrowDown } from 'react-icons/fa';
+import { IoIosArrowDown } from 'react-icons/io';
+
 const MyNav2 = () => {
   const location = useLocation();
 
@@ -96,7 +102,33 @@ const MyNav2 = () => {
             </div>
           </div>
 
-          <div className="xxs:hidden lg:block text-white ">Profile</div>
+          <div className="xxs:hidden lg:block">
+          <div className="flex justify-center items-center gap-2.5 text-[#FFFFFF]">
+
+            <Link to="/profile">
+              <img
+                src={profile}
+                alt="profile"
+                className="w-10  rounded-full"
+              />
+            </Link>
+            <div className="flex flex-col justify-center">
+                <div className="text-sm lg:text-base font-medium">
+                Maria Anwar
+                </div>
+                <div className="text-sm font-light">
+                Malhoc Inc.
+                </div>    
+            </div>
+            <button
+            
+            >
+            
+             <IoIosArrowDown className="dropdown-icon" />
+            </button>
+          </div>
+          </div>
+          
 
           <button
             className="xxs:block lg:hidden flex justify-center items-center py-2 cursor-pointer"
