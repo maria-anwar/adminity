@@ -4,6 +4,21 @@ import TitleBar from "../TitleBar";
 
 const EmployeeTable = () => {
   
+  //example to fetch employyes //import db and get getDocs object
+  // const fetchPost = async () => {
+       
+  //   await getDocs(collection(db, "todos"))
+  //       .then((querySnapshot)=>{               
+  //           const newData = querySnapshot.docs
+  //               .map((doc) => ({...doc.data(), id:doc.id }));
+  //           setTodos(newData);                
+  //           console.log(todos, newData);
+  //       })
+   
+  // useEffect(()=>{
+  //     fetchPost();
+  // }, [])
+  
   const [data, setData] = useState([
     {
       id: 1,

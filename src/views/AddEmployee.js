@@ -8,6 +8,8 @@ import NameField from "../components/inputfields/NameField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
 import SimpleField from "../components/inputfields/SimpleField";
+import { db, collection, addDoc  } from "../config/firebase";
+
 
 const AddEmployee = () => {
   const location = useLocation();
@@ -36,7 +38,8 @@ const AddEmployee = () => {
     // password: Yup.string().min(8).required("Password is required"),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
+    
     let userData = {
       fname: values.fname,
       lname: values.lname,
@@ -57,6 +60,15 @@ const AddEmployee = () => {
       userData.empId,
       userData.timezone
     );
+
+    const employee = {name: 'maria'}
+    addDoc(collection(db, "employees"), employee)
+      .then((response) => {
+        console.log("Document written with ID: ", response.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   };
 
   return (
