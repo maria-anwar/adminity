@@ -11,6 +11,7 @@ import { FaGoogle } from "react-icons/fa";
 // import Gvector  from "../../../public/assets/images/field1.png";
 import Gvector from "../../assets/images/Gvector.svg";
 import logimg from "../../assets/images/login-img.png";
+import google from "../../assets/images/google.png";
 
 const Login = () => {
   //const [data, setData] = useState([]);
@@ -67,130 +68,7 @@ const Login = () => {
 
   return (
     <>
-      {/* <section className="">
-        <div className="login-Parent">
-          <div className="side-sec bg-blue">
-            <div className="titlesec">Adminity</div>
-            <div className="desc-sec"> Where Great Things Happen</div>
-            <div className="side-img">
-              <img
-                className=""
-                src={process.env.PUBLIC_URL + "assets/images/login-img.png"}
-                alt="login-img"
-                height="450px"
-              />
-            </div>
-          </div>
-
-          <div className="login-section ">
-            <div className="login-main bg-skyblue">
-              <div className="google-login">
-                <Link className="">
-                  <FaGoogle size={20} color="tomato" />
-                </Link>
-                <Link className="godesc">
-                  <div>Login With Google</div>{" "}
-                </Link>
-              </div>
-              <div className="top-border">
-                <hr />
-              </div>
-              {error && <div className="text-warning">{error}</div>}
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-              >
-                {(props) => (
-                  <Form>
-                    <div className="mb-3">
-                      <label htmlForfor="email" className="form-label">
-                        Email address
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="type here..."
-                        className={`form-control ${
-                        props.errors.email && "is-invalid"
-
-                        }`}
-                        value={props.values.email}  //Onchange what is happening is binded with value
-                        onChange={props.handleChange}
-                        id="email"
-                        aria-describedby="emailHelp"
-                      />
-                      {props.errors.email && (
-                        <div
-                          id="email"
-                          className="invalid-feedback text-danger"
-                        >
-                          {props.errors.email}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mb-3">
-                      <label htmlForfor="password" className="form-label">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="type here..."
-                        value={props.values.password} //Onchange what is happening is binded with value
-                        onChange={props.handleChange}
-                        className={`form-control ${
-                        props.errors.password && "is-invalid"
-                        }`}
-                      />
-                      {props.errors.password && (
-                        <div
-                          id="password"
-                          className=" invalid-feedback text-danger"
-                        >
-                          {props.errors.password}
-                        </div>
-                      )}
-                    </div>
-                    <div className="form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="exampleCheck1"
-                      />
-                      <label className="form-check-label" htmlFor="exampleCheck1">
-                        Check me out
-                      </label>
-                    </div>
-                    <div className=" mb-3">
-                      <Link className="forgot-pass" to="/register">
-                        Forgot Password?
-                      </Link>
-                    </div>
-
-                    <button className="login-btn" type="submit">
-                      Login
-                    </button>
-
-                    <div className="signsec">
-                      <div className="acc-desc darkgray">
-                        Don’t have an account?
-                      </div>
-                      <Link className="sign-link blue" to="/register">
-                        Sign up
-                      </Link>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-
-      <section className="md:flex h-screen">
+      <section className="md:flex h-screen w-full">
         <div className="xxs:hidden md:block w-2/5 flex flex-col justify-between bg-[#1997BE] px-4 pt-3 md:py-0 border h-screen">
           <div className="flex flex-col gap-5">
             <h2 className=" text-white font-semibold text-3xl font-Inter">
@@ -203,12 +81,10 @@ const Login = () => {
           <img src={logimg} alt="login-image" className="bg-contain" />
         </div>
 
-        {/*-------Login Card----*/}
-
-        <div className="shadow-md xxs:px-5 xxs:py-10  xs:px-10  xs:py-12 sm:px-16 md:px-20 md:w-full  lg:px-28 lg:py-24 xl:px-48 xl:pt-20 h-full">
-          <div className="bg-[#F4F6F8] flex flex-col xxs:px-5 py-5 gap-2 rounded-md xs:px-10 border sm:px-16 md:px-28">
-            <div className="bg-white flex flex-row justify-center items-center gap-2 py-2 px-4 border border-[#8D888894] rounded-md ">
-              <img src={Gvector} alt="google-icon" className="w-4 h-4" />
+        <div className=" flex items-center shadow-md xxs:px-5 xs:px-10 sm:px-16  md:px-20 lg:px-24 xl:px-48 xxs:py-10  xs:py-12  md:w-full  lg:py-24  xl:pt-20 h-full ">
+          <div className="w-full bg-[#F4F6F8] flex flex-col xxs:px-5 xs:px-10 sm:px-10 md:px-20 lg:px-12 pt-5 pb-5 lg:pb-10 xl:pb-20 gap-2 rounded-md border">
+            <div className="bg-white flex flex-row justify-center items-center gap-2 py-2 px-4 border border-[#8D888894] rounded-md shadow-md">
+              <img src={google} alt="google-icon" className="w-4 h-4" />
               <div className=" font-Inter font-semibold text-xs  text-[#666262] ">
                 Login using Google
               </div>
@@ -231,7 +107,9 @@ const Login = () => {
                     </label>
 
                     <input
-                      className={`appearance-none border-1 border-[#cac8c894] rounded-sm shadow-md  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${props.errors.email && "border-red-500"}`}
+                      className={`w-full appearance-none border-1 border-[#cac8c894] rounded-sm shadow-md  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
+                        props.errors.email && "border-red-500"
+                      }`}
                       id="email"
                       value={props.values.email}
                       name="email"
@@ -240,13 +118,10 @@ const Login = () => {
                       onChange={props.handleChange}
                     />
                     {props.errors.email && (
-                        <div
-                          id="email"
-                          className="text-red-500"
-                        >
-                          {props.errors.email}
-                        </div>
-                      )}
+                      <div id="email" className="text-red-500">
+                        {props.errors.email}
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-col gap-1 mt-2">
                     <label
@@ -267,15 +142,16 @@ const Login = () => {
                       placeholder=""
                     />
                     {props.errors.password && (
-                        <div
-                          id="password"
-                          className="text-red-500"
-                        >
-                          {props.errors.password}
-                        </div>
-                      )}
+                      <div id="password" className="text-red-500">
+                        {props.errors.password}
+                      </div>
+                    )}
                   </div>
-                  <Link to="/register" className="text-[#1997BE] text-right font-Inter font-semibold text-xs pb-2" style={{textDecoration:'none'}}>
+                  <Link
+                    to="/register"
+                    className="text-[#1997BE] text-right font-Inter font-semibold text-xs pb-2"
+                    style={{ textDecoration: "none" }}
+                  >
                     Forgot Password?
                   </Link>
                   <button
@@ -287,16 +163,138 @@ const Login = () => {
 
                   <div className="font-Inter font-medium text-[#8D8888] text-xs text-center">
                     Don’t have an account?
-                    {/* <span className="text-[#1997BE]">Sign up</span> */}
-                    <Link to="/register" className="text-[#1997BE]" style={{textDecoration:'none'}}>Sign up</Link>
+                    <Link
+                      to="/register"
+                      className="text-[#1997BE]"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Sign up
+                    </Link>
                   </div>
                 </Form>
               )}
             </Formik>
-            {/* <div>Check box</div> */}
           </div>
         </div>
       </section>
+{/* 
+      <section className="md:flex md:h-screen w-full h-full">
+        <div className="xxs:hidden md:block w-2/5  bg-[#1997BE] px-4 pt-3 md:pt-6 xl:pt-10 border h-screen">
+          <div className="flex flex-col gap-20  h-full">
+            <div className="flex flex-col gap-5 border">
+              <h2 className=" text-white font-semibold text-3xl font-Inter">
+                Adminty
+              </h2>
+              <div className=" text-white font-sm text-xl">
+                Where Great Things Happen
+              </div>
+            </div>
+            <img src={logimg} alt="login-image" className="bg-contain" />
+          </div>
+        </div>
+
+        <div className=" flex items-center md:justify-center  w-full ">
+          <div className="xxs:px-5 xxs:py-10 xs:px-10 sm:px-16 md:px-20 md:w-full lg:px-28 lg:py-24 xl:px-48 xl:pt-20 shadow-md h-full w-full">
+            <h2 className="md:hidden xxs:block text-[#1997BE] text-center text-lg xs:text-2xl font-medium">
+              Adminty
+            </h2>
+            <div className="bg-[#F4F6F8] flex flex-col xxs:px-5 xs:px-10 sm:px-10 md:px-20 pt-5 pb-5 xl:pt-5 xl:pb-14 gap-2 rounded-md border">
+              <div className="bg-white flex flex-row justify-center items-center gap-2 py-2 px-4 border border-[#8D888894] rounded-md ">
+                <img src={google} alt="google-icon" className="w-4 h-4" />
+                <div className=" font-Inter font-semibold text-xs  text-[#666262] ">
+                  Login using Google
+                </div>
+              </div>
+              <hr />
+              {error && <div className="text-warning">{error}</div>}
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+              >
+                {(props) => (
+                  <Form className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
+                      <label
+                        htmlFor="email"
+                        className="text-[#3C4349] text-medium font-Inter font-medium"
+                      >
+                        Email
+                      </label>
+
+                      <input
+                        className={`appearance-none border-1 border-[#cac8c894] rounded-sm shadow-md  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
+                          props.errors.email && "border-red-500"
+                        }`}
+                        id="email"
+                        value={props.values.email}
+                        name="email"
+                        type="email"
+                        placeholder="jhon@gmail.com"
+                        onChange={props.handleChange}
+                      />
+                      {props.errors.email && (
+                        <div id="email" className="text-red-500">
+                          {props.errors.email}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-1 mt-2">
+                      <label
+                        htmlFor="email"
+                        className="text-[#3C4349] text-medium font-Inter font-medium"
+                      >
+                        Password
+                      </label>
+                      <input
+                        className={`appearance-none border-1 border-[#cac8c894] rounded-sm shadow-md py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
+                          props.errors.password && "border-red-500"
+                        }`}
+                        id="password"
+                        name="password"
+                        type="password"
+                        value={props.values.password}
+                        onChange={props.handleChange}
+                        placeholder=""
+                      />
+                      {props.errors.password && (
+                        <div id="password" className="text-red-500">
+                          {props.errors.password}
+                        </div>
+                      )}
+                    </div>
+                    <Link
+                      to="/register"
+                      className="text-[#1997BE] text-right font-Inter font-semibold text-xs pb-2"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Forgot Password?
+                    </Link>
+                    <button
+                      type="submit"
+                      className="bg-[#1997BE] py-2 rounded-lg text-white font-Inter font-semibold "
+                    >
+                      Login
+                    </button>
+
+                    <div className="font-Inter font-medium text-[#8D8888] text-xs text-center">
+                      Don’t have an account?
+                      
+                      <Link
+                        to="/register"
+                        className="text-[#1997BE]"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Sign up
+                      </Link>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
+          </div>
+        </div>
+      </section> */}
     </>
   );
 };

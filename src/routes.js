@@ -59,7 +59,6 @@ const AppRoutes = () => {
 
                     </Route>
                     <Route path="/home" element={<GlobalLayout />}>
-
                     </Route>
                     {/* Profile Routes */}
                     <Route path="/profile" element={<ProfileLayout />}>
