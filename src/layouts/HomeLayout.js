@@ -9,7 +9,7 @@ const HomeLayout = () =>{
         <div className="layout">
             {/* <Navbar /> */}
             <MyNav2/>
-            <Navbox />
+            {/* <Navbox /> */}
            <div className="">
            <Outlet />
            </div> 

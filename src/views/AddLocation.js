@@ -7,6 +7,7 @@ import NameField from "../components/inputfields/NameField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
 import SimpleField from "../components/inputfields/SimpleField";
+import { db, collection, addDoc  } from "../config/firebase";
 
 const AddLocation = () => {
   const location = useLocation();
@@ -36,7 +37,7 @@ const AddLocation = () => {
   });
 
   const onSubmit = (values) => {
-    let userData = {
+    let locData = {
       locName: values.locName,
       address: values.address,
       contactName: values.contactName,
@@ -47,14 +48,23 @@ const AddLocation = () => {
       
     };
     console.log(
-      userData.locName,
-      userData.address,
-      userData.contactName,
-      userData.phone,
-      userData.countryCode,
-      userData.addEmp,
-      userData.timezone
+      locData.locName,
+      locData.address,
+      locData.contactName,
+      locData.phone,
+      locData.countryCode,
+      locData.addEmp,
+      locData.timezone
     );
+
+    addDoc(collection(db, "locations"), locData)
+    .then((response) => {
+      console.log("Document written with ID: ", response.id);
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
+
   };
 
   return (

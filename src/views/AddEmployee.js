@@ -1,22 +1,37 @@
-import React from "react";
+import React, { useState,useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import AddNew from "../components/AddNew";
-//import "./css/AddForms.css";
 import { Formik, Form } from "formik";
-import * as Yup from "yup"; //For Validation Schema
+import * as Yup from "yup"; 
 import NameField from "../components/inputfields/NameField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
 import SimpleField from "../components/inputfields/SimpleField";
-import { db, collection, addDoc  } from "../config/firebase";
+import { db, collection, addDoc  } from "../config/firebase"; 
 
 
 const AddEmployee = () => {
+
+  const [showToast, setShowToast] = useState(false);
   const location = useLocation();
   const pathname=location.pathname;
   const newPath =  pathname.replace(/\/create$/, "");
-  console.log('path is', pathname);
-  console.log('New path is', );
+  //console.log('path is', pathname);
+  //console.log('New path is', );
+
+  const handleCloseToast = () => {
+    setShowToast(false);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleCloseToast();
+    }, 1000);
+
+    // return () => {
+    //   clearTimeout(timer);
+    // };
+  }, [showToast]);
 
   const initialValues = {
     fname: " ",
@@ -27,6 +42,7 @@ const AddEmployee = () => {
     countryCode: "",
     timezone: "",
   };
+
   const validationSchema = Yup.object().shape({
     fname: Yup.string().required("First name is required"),
     lname: Yup.string().required("Last name is required"),
@@ -35,10 +51,11 @@ const AddEmployee = () => {
     phone: Yup.string().required("Phone number is required"),
     countryCode: Yup.string().required("please select country code*"),
     timezone: Yup.string().required("Timezone is required"),
-    // password: Yup.string().min(8).required("Password is required"),
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values) => {  
+   
+      
     
     let userData = {
       fname: values.fname,
@@ -61,34 +78,28 @@ const AddEmployee = () => {
       userData.timezone
     );
 
-    const employee = {name: 'maria'}
-    addDoc(collection(db, "employees"), employee)
+    
+    addDoc(collection(db, "employees"), userData)
       .then((response) => {
         console.log("Document written with ID: ", response.id);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
       });
+
+      setShowToast(true);
+
   };
 
   return (
     <>
-      {/* <section className="py-3">
-        <div className="form-parent">
-          <form className="addform">
-            <div className="row">
-              <NameField />
-              <EmailField />
-              <PhoneField />
-              <DropdownField title={"Timezone"} />
-              <DropdownField title={"Manager"} />
-              <DropdownField title={"Position"} />
-            </div>
-            <button className="mybtn">Save</button>
-          </form>
-        </div>
-      </section> */}
+
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
+      {
+        showToast? (<div className="fixed top-10 right-5 p-2 bg-[#5FCF5C] text-white rounded-md shadow-md">
+      Information saved successfully 
+    </div>): ''
+      }
         <AddNew title={'Employee'} url={newPath}/>
         <div className="bg-[#F2F5F7] mt-2 xs:mt-3 md:mt-4 xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 py-4 md:py-5 lg:py-6 rounded-md">
           <Formik

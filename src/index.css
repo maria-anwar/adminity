@@ -16,7 +16,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }  */
-:root{
+/* :root{
   --white: #FFFFFF;
   --blue-clr : #1997BE;
   --bs-gray: #666262;
@@ -33,7 +33,7 @@ code {
   --bs-breakpoint-lg: 992px;
   --bs-breakpoint-xl: 1200px;
   --bs-breakpoint-xxl: 1400px;
-}
+} */
 
 /* .bg-blue{
   background-color: var(--blue-clr);

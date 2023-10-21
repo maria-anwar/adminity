@@ -1,5 +1,4 @@
 import React from "react";
-// import "../css/auth.css";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { useState } from "react";

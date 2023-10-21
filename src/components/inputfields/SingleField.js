@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/inputfield.css";
+
 
 const SingleField = (props) => {
   return (

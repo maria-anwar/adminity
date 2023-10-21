@@ -1,101 +1,120 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import TitleBar from "../TitleBar";
+import { db, collection, getDocs } from "../../config/firebase";
 
 const LocationTable = ()=>{
-    const [data, setData] = useState([
-        {
-          id: 1,
-          name: "John Doe",
-          employeeId: "E123",
-          position: "Software Engineer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 2,
-          name: "John Doe",
-          employeeId: "E127",
-          position: "Software Engineer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 3,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 4,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 5,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 6,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 7,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 8,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        {
-          id: 9,
-          name: "John Doe",
-          employeeId: "E124",
-          position: "Web developer",
-          location: "New York",
-          email: "john@example.com",
-          phone: "123-456-7890",
-          status: "Active",
-        },
-        // Add more data rows as needed
-      ]);
-      const handleCheckboxChange = (id) => {
+
+  const [data,setData] = useState([]);
+  const fetchPost = async () => {
+     getDocs(collection(db, "locations")).then((response) => {
+      const locationsData = response.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setData(locationsData);
+      console.log(locationsData);
+    });
+  };
+  useEffect(() => {
+    fetchPost();
+  }, []);
+
+  
+  // const [data, setData] = useState([
+    //     {
+    //       id: 1,
+    //       name: "John Doe",
+    //       employeeId: "E123",
+    //       position: "Software Engineer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "John Doe",
+    //       employeeId: "E127",
+    //       position: "Software Engineer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 3,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 4,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 5,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 6,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 7,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 8,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     {
+    //       id: 9,
+    //       name: "John Doe",
+    //       employeeId: "E124",
+    //       position: "Web developer",
+    //       location: "New York",
+    //       email: "john@example.com",
+    //       phone: "123-456-7890",
+    //       status: "Active",
+    //     },
+    //     // Add more data rows as needed
+    //   ]);
+    
+    const handleCheckboxChange = (id) => {
         setData(
           data.map((item) =>
             item.id === id ? { ...item, selected: !item.selected } : item
@@ -139,7 +158,7 @@ const LocationTable = ()=>{
                 <th scope="col" className="px-6 py-3">
                   No. of employees
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-6 py-3 text-center">
                   Action
                 </th>
                 {/* <th scope="col" className="px-6 py-3">
@@ -161,14 +180,14 @@ const LocationTable = ()=>{
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {item.name}
+                    {item.locName}
                   </th>
-                  <td className="px-6 py-4">{item.employeeId}</td>
-                  <td className="px-6 py-4">{item.position}</td>
-                  <td className="px-6 py-4">{item.location}</td>
-                  <td className="px-6 py-4">{item.email}</td>
+                  <td className="px-6 py-4">{item.address}</td>
+                  <td className="px-6 py-4">{''}</td>
                   <td className="px-6 py-4">{item.phone}</td>
-                  <td className="px-6 py-4 text-left">
+                  <td className="px-6 py-4">{item.timezone}</td>
+                  <td className="px-6 py-4">{''}</td>
+                  <td className="px-6 py-4 text-center">
                     <a
                       href="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"

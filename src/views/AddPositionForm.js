@@ -6,9 +6,9 @@ import * as Yup from "yup"; //For Validation Schema
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FaToggleOn, FaToggleOff } from "react-icons/fa";
 import SimpleField from "../components/inputfields/SimpleField";
 import SingleField from "../components/inputfields/SingleField";
+import { db, collection, addDoc } from "../config/firebase";
 
 const AddPositionForm = () => {
   const location = useLocation();
@@ -20,111 +20,43 @@ const AddPositionForm = () => {
     setIsToggled(!isToggled);
   };
   const initialValues = {
-    fname: " ",
-    lname: " ",
-    email: "",
-    empId: "",
-    phone: "",
-    countryCode: "",
-    timezone: "",
+    posTitle: " ",
+    wageRate: " ",
     addDoc: "",
+    delDoc: "",
   };
 
   const validationSchema = Yup.object().shape({
-    fname: Yup.string().required("First name is required"),
-    lname: Yup.string().required("Last name is required"),
-    email: Yup.string().email().required("Email is required"),
-    empId: Yup.string().required("Employee Id is required"),
-    phone: Yup.string().required("Phone number is required"),
-    countryCode: Yup.string().required("country code is required"),
-    timezone: Yup.string().required("Timezone is required"),
-    // password: Yup.string().min(8).required("Password is required"),
+    posTitle: Yup.string().required("please enter your position title"),
+    wageRate: Yup.string().required("please enter your wage rate"),
+    addDoc: Yup.string().required("please enter your docs name"),
+    delDoc: Yup.string().required("please enter docs name"),
   });
   const onSubmit = (values) => {
     let userData = {
+      posTitle: values.posTitle,
+      wageRate: values.wageRate,
       addDoc: values.addDoc,
-      fname: values.lname,
-      email: values.email,
-      empId: values.empId,
-      phone: values.phone,
-      countryCode: values.countryCode,
-      timezone: values.timezone,
-      manager: values.manager,
-      position: values.position,
+      delDoc: values.delDoc,
     };
+
     console.log(
-      userData.lname,
-      userData.fname,
-      userData.email,
-      userData.phone,
-      userData.countryCode,
-      userData.empId,
-      userData.timezone
+      userData.posTitle,
+      userData.wageRate,
+      userData.addDoc,
+      userData.delDoc
     );
+
+    addDoc(collection(db, "positions"), userData)
+      .then((response) => {
+        console.log("Document written with ID: ", response.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   };
   return (
     <>
-      {/* <AddNew />
-      <section className="py-3">
-        <div className="form-parent">
-          <form className="addform">
-            <div className="row">
-              <SingleField
-                title={"Position Title"}
-                placeholder={"Type Here.."}
-              />
-              <SmallField title={"Wage Rate"} placeholder={"Type Here.."} />
-              <div className="col-lg-12 col-md-12 col-sm-12 py-3">
-                <div className="row">
-                  <div className="col-lg-6 col-md-6 col-sm-12 maindoc">
-                    <div className="mydoc">
-                      What documents do you require for this position?
-                    </div>
-                    <div>Toggle Here..</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-12 col-md-12 col-sm-12 py-3">
-              <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-12 d-flex gap-2">
-                <input
-                  type="text"
-                  id="name"
-                  name="fname"
-                  placeholder=""
-                  className="form-control"
-                  
-                />
-              
-              <button className="incbtn"> <FontAwesomeIcon icon={faPlus} /></button>
-              
-                
-             
-              </div>
-              </div>
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-12 d-flex gap-2">
-                <input
-                  type="text"
-                  id="name"
-                  name="fname"
-                  placeholder=""
-                  className="form-control"
-                  
-                />
-              
-              <button className="decbtn"> <FontAwesomeIcon icon={faMinus} /></button>
-              
-                
-             
-              </div>
-            </div>
-            <button className="mybtn my-4">Save</button>
-
-          </form>
-        </div>
-      </section> */}
-
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
         <AddNew title={"Employee"} url={newPath} />
         <div className="bg-[#F2F5F7] flex items-center mt-2 mb-10 xs:mt-3 md:mt-4 xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 py-4 md:py-5 lg:py-6 xl:py-8 rounded-md shadow-md ">
@@ -137,21 +69,21 @@ const AddPositionForm = () => {
               <Form className="flex flex-col gap-4 xl:gap-5 justify-center">
                 <SimpleField
                   title={"Position Title"}
-                  value={props.values.email}
+                  value={props.values.posTitle}
                   onChange={props.handleChange}
-                  errors={props.errors.email}
-                  name={"email"}
-                  id={"email"}
-                  type={"email"}
+                  errors={props.errors.posTitle}
+                  name={"posTitle"}
+                  id={"posTitle"}
+                  type={"text"}
                 />
                 <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%]">
                   <SimpleField
                     title={"Wage Rate"}
-                    value={props.values.empId}
+                    value={props.values.wageRate}
                     onChange={props.handleChange}
-                    errors={props.errors.empId}
-                    name={"empId"}
-                    id={"empId"}
+                    errors={props.errors.wageRate}
+                    name={"wageRate"}
+                    id={"wageRate"}
                     type={"text"}
                   />
                 </div>
@@ -163,19 +95,12 @@ const AddPositionForm = () => {
                     </div>
                     <div>
                       <label class="relative inline-flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          value=""
-                          class="sr-only peer"
-                          
-                        />
+                        <input type="checkbox" value="" class="sr-only peer" />
                         <div class="w-11 h-6 bg-gray-200 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                        
                       </label>
                     </div>
+                    
                     {/* Toggle functionality here */}
-
-                   
                   </div>
                   <div className="flex gap-2 justify-between">
                     <SingleField
@@ -184,6 +109,7 @@ const AddPositionForm = () => {
                       type={"text"}
                       placeholder={"Name here"}
                       value={props.values.addDoc}
+                      onChange={props.handleChange}
                     />
                     <button className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md">
                       <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">
@@ -196,11 +122,13 @@ const AddPositionForm = () => {
                   </div>
                   <div className="flex gap-2 justify-between">
                     <SingleField
-                      name={"addDoc"}
-                      id={"addDoc"}
+                      name={"delDoc"}
+                      id={"delDoc"}
                       type={"text"}
                       placeholder={"Name here"}
-                      value={props.values.addDoc}
+                      value={props.values.delDoc}
+                      onChange={props.handleChange}
+
                     />
                     <button className="bg-[#FF4242] flex justify-center items-center w-10 lg:w-11 rounded-md">
                       <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">

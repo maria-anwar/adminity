@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/navbar.css";
+
 import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";

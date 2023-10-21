@@ -8,6 +8,7 @@ const TitleBar = (props) => {
     color: "white", // Set the color to white
     fontSize: "16px", // Adjust the font size as needed
   };
+  
   return (
     <>
       <section className="pt-2 xs:pt-3 sm:pt-4">
