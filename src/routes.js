@@ -17,31 +17,75 @@ import PositionTable from "./components/data-tables/PositionTable";
 import LocationTable from "./components/data-tables/LocationTable";
 import Navbox from "./components/Navbox";
 import UserProfile from "./views/UserProfile";
+import MyNav from "./components/MyNav";
+import MyNav2 from "./components/MyNav2";
+import Table from "./components/Table";
+import TitleBar from "./components/TitleBar";
+import AddNew from "./components/AddNew";
+import ProfileBar from "./components/ProfileBar";
+import ProfileLayout from "./layouts/ProfileLayout";
+import Personal from "./views/profile/Personal";
+import Work from "./views/profile/Work";
+import Documents from "./views/profile/Documents";
+import Unavailability from "./views/profile/Unavailability";
+import Account from "./components/Account";
+import DashboardLayout from "./layouts/DashboardLayout";
+//import GlobalLayout from "./layouts/GlobalLayout";
+import CreateSchedule from "./views/CreateSchedule";
+import MyRedux from "./components/MyRedux";
+import MyToast from "./components/MyToast";
+import MyCalendar from "./components/MyCalendar";
+import Planner from "./components/Planner";
 
 const AppRoutes = () => {
     return(
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<HomeLayout />}>
-                        <Route index element={<Home />}/>                       
+                    <Route element={<HomeLayout />}>               
+                        {/* <Route path="/" element={<DashboardLayout />}/> */}
+
+                        <Route path="/" element={<DashboardLayout />}> 
+                        <Route index element={<Home/>} />
+                        <Route path="/employees" element={<EmployeeTable />}/>
+                        <Route path="/employees/create" element={<AddEmployee />}/>
+                        <Route path="/positions" element={<PositionTable />}/>
+                        <Route path="/positions/create" element={<AddPositionForm />}/>
+                        <Route path="/locations" element={<LocationTable />}/>
+                        <Route path="/locations/create" element={<AddLocation />}/>
+                         </Route>  
                         <Route path="/navbox" element={<Navbox />}/>
                         <Route path="/schedule" element={<Schedule />}/>
-                        <Route path="/employees" element={<EmployeeTable />}/>
                         <Route path="/timesheet" element={<Timesheet />}/>
                         <Route path="/reports" element={<Reports />}/>
                         <Route path="/tasks" element={<Tasks />}/>
-                        <Route path="/position" element={<AddPosition />}/>
-                        <Route path="/employee/create" element={<AddEmployee />}/>
-                        <Route path="/position/create" element={<AddPositionForm />}/>
-                        <Route path="/location/create" element={<AddLocation />}/>
-                        <Route path="/positions" element={<PositionTable />}/>
-                        <Route path="/locations" element={<LocationTable />}/>
-                        <Route path="/profile" element={<UserProfile />}/>
+                        {/* <Route path="/profile" element={<UserProfile />}/> */}
+                        <Route path="/titlebar" element={<TitleBar />}/>
+                        <Route path="/addnew" element={<AddNew />}/>
+                        <Route path="/profilebar" element={<ProfileBar />}/>
+                        <Route path="/account" element={<Account />}/>
+
+                    <Route path="/profile" element={<ProfileLayout />}>
+                    <Route index element={<Personal />}/>  
+                    <Route path="/profile/work" element={<Work />}/>
+                    <Route path="/profile/documents" element={<Documents />}/>
+                    <Route path="/profile/unavailability" element={<Unavailability />}/>
+                    
                     </Route>
+                    </Route>
+                   
+                    {/* Profile Routes */}
+
                     <Route path="/login" element={<Login />}/>
                     <Route path="/register" element={<Register />}/>
-                    
+                    <Route path="/mynav" element={<MyNav />}/>
+                    <Route path="/mynav2" element={<MyNav2 />}/>
+                    <Route path="/schedule/create" element={<CreateSchedule/>}/>
+                    <Route path="/myredux" element={<MyRedux/>}/>
+                    <Route path="/tost" element={<MyToast/>}/>
+                    <Route path="/calendar" element={<MyCalendar/>}/>
+                    <Route path="/planner" element={<Planner/>}/>
+                  
                 </Routes>
             </BrowserRouter>
         </>

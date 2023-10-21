@@ -1,18 +1,25 @@
 import React from "react";
-import "../css/inputfield.css";
-const   EmailField = ()=>{
+
+const EmailField = (props)=>{
     return(
         <>
-         <div className="col-lg-12 col-md-12 col-sm-12 pb-3">
-                <label className="pb-1 mylabel">Email</label>
-                <input
-                  type="email"
-                  id="name"
-                  name="fname"
-                  placeholder="name@gmail.com"
-                  className="form-control"
-                />
-              </div>
+        <div className="flex flex-col gap-1 lg:gap-1.5 w-full">
+                  <label
+                    htmlFor="email"
+                    className="text-[#3C4349] text-sm  font-Inter font-medium"
+                  >
+                    Email
+                  </label>
+                  <input
+                    className="border  text-gray-700 rounded-sm shadow-sm py-1 lg:py-1.5 px-3 focus:outline-none focus:border-blue-500"
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={props.emailValue}
+                    onChange={props.onChange}
+                    placeholder="jhon@gmail.com"
+                  />
+                </div>
         </>
     );
 };

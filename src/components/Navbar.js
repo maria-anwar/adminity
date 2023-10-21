@@ -1,14 +1,19 @@
 import React from "react";
-import "./css/navbar.css";
 
+import { NavLink, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg nav-bg sticky-top px-5" data-bs-theme="dark">
-        <div className="container-fluid cont-clr">
-          <a className="navbar-brand" href="#">
+      <nav
+        className="navbar navbar-expand-lg nav-bg sticky-top px-5"
+        data-bs-theme="dark"
+      >
+        <div className="container-fluid cont-clr ">
+          <Link className="navbar-brand" to="/">
             Adminity
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,32 +28,32 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className="nav-link active" href="/">
+                <NavLink className="nav-link active" to="/">
                   DASHBOARD
                   <span className="visually-hidden">(current)</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/schedule">
+                <NavLink className="nav-link" to="/schedule">
                   SCHEDULE
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/timesheet">
+                <NavLink className="nav-link" to="/timesheet">
                   TIMESHEET
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/reports">
+                <NavLink className="nav-link" to="/reports">
                   REPORTS
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/tasks">
+                <NavLink className="nav-link" to="/tasks">
                   TASKS
-                </a>
+                </NavLink>
               </li>
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   data-bs-toggle="dropdown"
@@ -74,27 +79,75 @@ const Navbar = () => {
                     Separated link
                   </a>
                 </div>
-              </li>
+              </li> */}
             </ul>
             <div className="nav-card">
-            <div>
-                    <img
-                      className="navcard-img"
-                      src="https://images.business.com/app/uploads/2022/03/23021439/freelancer_Prostock-Studio_getty-3.jpg"
-                      alt="user-profile"
-                      width="50px"
-                      height="50px"
-                    />
-                  </div>
-                  <div className="flex-column tmini-cont">
-                    <h6 className="acc-title">Maria Anwar</h6>
-                    <span className="ceoclr">Malhoc Inc.</span>
-                  </div>
+              
+                <Link to="/profile">
+                  <img
+                    className="navcard-img"
+                    src="https://images.business.com/app/uploads/2022/03/23021439/freelancer_Prostock-Studio_getty-3.jpg"
+                    alt="user-profile"
+                    width="50px"
+                    height="50px"
+                  />
+                </Link>
+                <div className="dropdown">
+
+               <Link 
+                  to="/profile"
+
+                  className=""
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{textDecoration:'none'}}
+                  >
+
+                <div className="d-flex">
+              <div className="flex-column tmini-cont">
+                <h6 className="acc-title">Maria Anwar</h6>
+                <span className="ceoclr">Malhoc Inc.</span>
+              </div>
+              <div className="pt-3 ms-3 ">
+                
+                  <FontAwesomeIcon
+                    className="dropdown-icon "
+                    icon={faAngleDown}
+                    id="dropdownMenuButton1"
+                  />
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a className="dropdown-item" href="/profile">
+                      view profile
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Edit Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      settings
+                    </a>
+                  </li>
+                </ul>
+               
+              </div>
+                </div>
+               </Link>
+                </div>
+             
+
+             
             </div>
-            
           </div>
         </div>
       </nav>
+
+     
     </>
   );
 };

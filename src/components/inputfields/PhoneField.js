@@ -1,34 +1,69 @@
 import React from "react";
-import "../css/inputfield.css";
-const   PhoneField = ()=>{
-    return(
-        <>
-         <div className="col-lg-12 col-md-12 col-sm-12 pb-3">
-                <label className="pb-1 mylabel">Phone</label>
-                <div className="row">
-                  <div className="col-lg-6 col-md-6 col-sm-6">
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                    >
-                      <option selected>+92</option>
-                      <option value="1">+55</option>
-                      <option value="2">+44</option>
-                      <option value="3">+71</option>
-                    </select>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-6">
-                    <input
-                      type="text"
-                      id="lname"
-                      name="lname"
-                      placeholder="Last Name"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-        </>
-    );
+
+const PhoneField = (props) => {
+  return (
+    <>
+      <div className="flex flex-col sm:flex-row gap-1 lg:gap-1.5 w-full">
+        <div className=" sm:w-1/2 flex flex-col gap-1 ">
+          <label
+            htmlFor="email"
+            className="text-[#3C4349] text-sm  font-Inter font-medium"
+          >
+          
+            <span className="sm:block xxs:hidden">Phone</span>
+            <span className="sm:hidden xxs:block">Country Code</span>
+          </label>
+
+          <select
+            id="countryCode"
+            name="countryCode"
+            value={props.codeValue}
+            onChange={props.onChange}
+            className={`w-full block px-3 py-1.5 lg:py-[0.47rem] text-sm text-gray-900 border rounded-sm shadow-sm outline:none focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${props.codeErrors && "border-red-500 focus:border-red-500"}`}
+          >
+            <option selected>+92</option>
+            <option value="US">+44</option>
+            <option value="CA">+51</option>
+            <option value="FR">+77</option>
+            <option value="DE">+90</option>
+          </select>
+          {props.codeErrors && (
+                        <div
+                          id="fname"
+                          className="text-red-500"
+                        >
+                          {props.codeErrors}
+                        </div>
+                      )}
+        </div>
+
+        <div className=" sm:w-1/2 flex flex-col gap-1">
+          <label
+            htmlFor="phone"
+            className="sm:text-[#F2F5F7] text-[#3C4349] text-sm sm:text-medium font-Inter font-medium"
+          >
+            Phone
+          </label>
+          <input
+            className= {`border text-gray-700 outline:none focus:outline-none rounded-sm shadow-sm py-1 lg:py-1.5 px-3  focus:border-blue-500 ${props.phoneErrors && "border-red-500 focus:border-red-500"}`}
+            type="text"
+            id="phone"
+            name="phone"
+            value={props.value}
+            onChange={props.onChange}
+            placeholder={props.placeholder}
+          />
+          {props.phoneErrors && (
+                        <div
+                          id="fname"
+                          className="text-red-500"
+                        >
+                          {props.phoneErrors}
+                        </div>
+                      )}
+        </div>
+      </div>
+    </>
+  );
 };
 export default PhoneField;
