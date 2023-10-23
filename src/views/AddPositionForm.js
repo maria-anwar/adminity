@@ -15,9 +15,12 @@ const AddPositionForm = () => {
   const pathname = location.pathname;
   const newPath = pathname.replace(/\/create$/, "");
   const [isToggled, setIsToggled] = useState(false);
+  console.log(isToggled);
 
+//console.log(isToggled);
   const handleToggle = () => {
     setIsToggled(!isToggled);
+    // setIsToggled(true);
   };
   const initialValues = {
     posTitle: " ",
@@ -32,6 +35,7 @@ const AddPositionForm = () => {
     addDoc: Yup.string().required("please enter your docs name"),
     delDoc: Yup.string().required("please enter docs name"),
   });
+
   const onSubmit = (values) => {
     let userData = {
       posTitle: values.posTitle,
@@ -55,6 +59,7 @@ const AddPositionForm = () => {
         console.error("Error adding document: ", error);
       });
   };
+
   return (
     <>
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
@@ -66,7 +71,7 @@ const AddPositionForm = () => {
             onSubmit={onSubmit}
           >
             {(props) => (
-              <Form className="flex flex-col gap-4 xl:gap-5 justify-center">
+              <Form className="flex flex-col gap-4 xl:gap-5 justify-center w-full">
                 <SimpleField
                   title={"Position Title"}
                   value={props.values.posTitle}
@@ -76,7 +81,7 @@ const AddPositionForm = () => {
                   id={"posTitle"}
                   type={"text"}
                 />
-                <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%]">
+              <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%]">
                   <SimpleField
                     title={"Wage Rate"}
                     value={props.values.wageRate}
@@ -86,7 +91,7 @@ const AddPositionForm = () => {
                     id={"wageRate"}
                     type={"text"}
                   />
-                </div>
+                </div>  
 
                 <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%] flex flex-col gap-3">
                   <div className="flex flex-col xxs:gap-4 md:flex-row md:justify-between">
@@ -94,15 +99,18 @@ const AddPositionForm = () => {
                       What documents do you require for this position?
                     </div>
                     <div>
-                      <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" />
-                        <div class="w-11 h-6 bg-gray-200 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                      </label>
+                     <div class="relative inline-flex items-center cursor-pointer" onClick={handleToggle}>
+                        <input type="checkbox" value="" class="sr-only peer"
+                         checked={isToggled || false} />
+                        <div className="w-11 h-6 bg-gray-200 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                      </div> 
+              
                     </div>
                     
                     {/* Toggle functionality here */}
                   </div>
-                  <div className="flex gap-2 justify-between">
+                    {isToggled? (
+                      <div className="flex gap-2 justify-between">
                     <SingleField
                       name={"addDoc"}
                       id={"addDoc"}
@@ -120,6 +128,9 @@ const AddPositionForm = () => {
                       </div>
                     </button>
                   </div>
+                  
+                  ) :'' }
+                  
                   <div className="flex gap-2 justify-between">
                     <SingleField
                       name={"delDoc"}

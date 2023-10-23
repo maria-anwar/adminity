@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { useState } from "react";
@@ -11,9 +11,12 @@ import { FaGoogle } from "react-icons/fa";
 import Gvector from "../../assets/images/Gvector.svg";
 import logimg from "../../assets/images/login-img.png";
 import google from "../../assets/images/google.png";
+import { AuthContext } from "../../context/auth-context";
 
 const Login = () => {
   //const [data, setData] = useState([]);
+  const credentails = useContext(AuthContext);
+  console.log(credentails);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -38,6 +41,7 @@ const Login = () => {
     email: "",
     password: "",
   };
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().email().required("Email is required"),
     password: Yup.string().min(8).required("Password is required"),
@@ -55,7 +59,13 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        // started making changes from here..
+        credentails.email = user.email;
+        localStorage.setItem(
+          'email',user.email
+        );
+        // ends here
+        console.log(credentails.email);
         navigate("/");
       })
       .catch((error) => {

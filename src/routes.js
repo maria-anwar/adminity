@@ -36,6 +36,7 @@ import MyRedux from "./components/MyRedux";
 import MyToast from "./components/MyToast";
 import MyCalendar from "./components/MyCalendar";
 import Planner from "./components/Planner";
+import Guard from "./components/Guard";
 
 const AppRoutes = () => {
     return(
@@ -65,7 +66,7 @@ const AppRoutes = () => {
                         <Route path="/profilebar" element={<ProfileBar />}/>
                         <Route path="/account" element={<Account />}/>
 
-                    <Route path="/profile" element={<ProfileLayout />}>
+                    <Route path="/profile" element={<Guard><ProfileLayout /></Guard>}>
                     <Route index element={<Personal />}/>  
                     <Route path="/profile/work" element={<Work />}/>
                     <Route path="/profile/documents" element={<Documents />}/>
@@ -85,6 +86,8 @@ const AppRoutes = () => {
                     <Route path="/tost" element={<MyToast/>}/>
                     <Route path="/calendar" element={<MyCalendar/>}/>
                     <Route path="/planner" element={<Planner/>}/>
+                    <Route path="/guard" element={<Guard/>}/>
+                    
                   
                 </Routes>
             </BrowserRouter>

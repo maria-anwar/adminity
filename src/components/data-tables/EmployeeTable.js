@@ -1,21 +1,31 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TitleBar from "../TitleBar";
 import { db, collection, getDocs } from "../../config/firebase";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const EmployeeTable = () => {
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
+  const [locationData, setLocationData] = useState([]);
+  
+  const [isLoading, setIsLoading] = useState(true);
+
+  let [color, setColor] = useState("#FC8955");
   //example to fetch employyes //import db and get getDocs object
+  
   const fetchPost = async () => {
-     getDocs(collection(db, "employees")).then((response) => {
+    getDocs(collection(db, "employees")).then((response) => {
       const empData = response.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setData(empData);
+      setIsLoading(false);
       console.log(empData);
     });
   };
+
+ 
   useEffect(() => {
     fetchPost();
   }, []);
@@ -164,42 +174,54 @@ const EmployeeTable = () => {
                     Action
                   </th>
                   {/* <th scope="col" className="px-6 py-3">
-                  <span className="sr-only">Edit</span>
-                </th> */}
+                    <span className="sr-only">Edit</span>
+                  </th> */}
                 </tr>
               </thead>
-              <tbody>
-                {data.map((item) => (
-                  <tr className="bg-white border-b hover:bg-blue-100">
-                    <td className="px-6 py-4">
-                      <input
-                        type="checkbox"
-                        checked={item.selected || false}
-                        onChange={() => handleCheckboxChange(item.id)}
-                      />
-                    </td>
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                    >
-                      {item.name}
-                    </th>
-                    <td className="px-6 py-4">{item.empId}</td>
-                    <td className="px-6 py-4">{""}</td>
-                    <td className="px-6 py-4">{item.location}</td>
-                    <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">{item.phone}</td>
-                    <td className="px-6 py-4">{''}</td>
-                    <td className="px-6 py-4 text-center">
-                      <a
-                        href="#"
-                        className="font-medium text-blue-600 hover:underline"
+              <tbody className="w-full">
+                {isLoading ? (
+                  <div className="flex justify-center py-10 w-[100%]">
+                  <ClipLoader
+                    color={color}
+                    loading={isLoading}
+                    size={70} 
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                  </div>
+                ) : (
+                  data.map((item) => (
+                    <tr className="bg-white border-b hover:bg-blue-100">
+                      <td className="px-6 py-4">
+                        <input
+                          type="checkbox"
+                          checked={item.selected || false}
+                          onChange={() => handleCheckboxChange(item.id)}
+                        />
+                      </td>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                       >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                ))}
+                        {item.fname}
+                      </th>
+                      <td className="px-6 py-4">{item.empId}</td>
+                      <td className="px-6 py-4">{item.position}</td>
+                      <td className="px-6 py-4">{item.location}</td>
+                      <td className="px-6 py-4">{item.email}</td>
+                      <td className="px-6 py-4">{item.phone}</td>
+                      <td className="px-6 py-4">working..</td>
+                      <td className="px-6 py-4 text-center">
+                        <a
+                          href="#"
+                          className="font-medium text-blue-600 hover:underline"
+                        >
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
