@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TitleBar from "../TitleBar";
-import { db, collection, getDocs } from "../../config/firebase";
 import ClipLoader from "react-spinners/ClipLoader";
+import { db, collection, getDocs } from "../../config/firebase";
 
 const EmployeeTable = () => {
   const [data, setData] = useState([]);
+  const [empId, setEmpId] = useState([]);
   const [locationData, setLocationData] = useState([]);
-  
   const [isLoading, setIsLoading] = useState(true);
-
   let [color, setColor] = useState("#FC8955");
+  let count = data.length;
   //example to fetch employyes //import db and get getDocs object
   
   const fetchPost = async () => {
@@ -18,10 +18,13 @@ const EmployeeTable = () => {
       const empData = response.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
+        
       }));
+      setEmpId(empData.id)
       setData(empData);
       setIsLoading(false);
-      console.log(empData);
+      console.log(empId);
+      //console.log(empData);
     });
   };
 
@@ -137,11 +140,11 @@ const EmployeeTable = () => {
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
         <TitleBar
           title={"Employees"}
-          count={"50"}
+          count={count}
           addbtn={"Add Employee"}
           url={"/employees/create"}
         />
-        <section className="pt-3 md:pt-4">
+        <section className="pt-3 md:pt-4 mb-10">
           <div className="relative overflow-x-auto shadow-md xxs:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500">
               <thead className="text-xs text-gray-700 uppercase bg-[#1997BE]">

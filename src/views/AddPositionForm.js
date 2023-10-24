@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import AddNew from "../components/AddNew";
 import { useLocation } from "react-router-dom";
 import { Formik, Form } from "formik";
@@ -15,13 +15,30 @@ const AddPositionForm = () => {
   const pathname = location.pathname;
   const newPath = pathname.replace(/\/create$/, "");
   const [isToggled, setIsToggled] = useState(false);
-  console.log(isToggled);
+  const fileInputRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
-//console.log(isToggled);
+  //function for toggle button 
   const handleToggle = () => {
     setIsToggled(!isToggled);
-    // setIsToggled(true);
   };
+
+// methods start for file handling
+  const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+    } else {
+      setSelectedFile(null);
+    }
+  };
+
+  const openFileSelector = () => {
+    fileInputRef.current.click();
+  };
+
+  // methods for file handling ends here
+
   const initialValues = {
     posTitle: " ",
     wageRate: " ",
@@ -81,7 +98,7 @@ const AddPositionForm = () => {
                   id={"posTitle"}
                   type={"text"}
                 />
-              <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%]">
+                <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%]">
                   <SimpleField
                     title={"Wage Rate"}
                     value={props.values.wageRate}
@@ -91,46 +108,71 @@ const AddPositionForm = () => {
                     id={"wageRate"}
                     type={"text"}
                   />
-                </div>  
-
+                </div>               
                 <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%] flex flex-col gap-3">
                   <div className="flex flex-col xxs:gap-4 md:flex-row md:justify-between">
                     <div className=" text-[#3C4349] font-semibold text-sm">
                       What documents do you require for this position?
                     </div>
                     <div>
-                     <div class="relative inline-flex items-center cursor-pointer" onClick={handleToggle}>
-                        <input type="checkbox" value="" class="sr-only peer"
-                         checked={isToggled || false} />
+                      <div
+                        class="relative inline-flex items-center cursor-pointer"
+                        onClick={handleToggle}
+                      >
+                        <input
+                          type="checkbox"
+                          value=""
+                          class="sr-only peer"
+                          checked={isToggled || false}
+                        />
                         <div className="w-11 h-6 bg-gray-200 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                      </div> 
-              
+                      </div>
                     </div>
-                    
-                    {/* Toggle functionality here */}
+
                   </div>
-                    {isToggled? (
-                      <div className="flex gap-2 justify-between">
-                    <SingleField
-                      name={"addDoc"}
-                      id={"addDoc"}
-                      type={"text"}
-                      placeholder={"Name here"}
-                      value={props.values.addDoc}
-                      onChange={props.handleChange}
-                    />
-                    <button className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md">
-                      <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">
-                        <FontAwesomeIcon
-                          className="text-[#1997BE] font-semibold w-3 h-3"
-                          icon={faPlus}
+                    {/* Toggle functionality here */}
+                  {isToggled ? (
+                    <div>
+
+                    <div className="flex gap-2 justify-between">
+                      <SingleField
+                        name={"addDoc"}
+                        id={"addDoc"}
+                        type={"text"}
+                        placeholder={"Name here"}
+                        value={props.values.addDoc}
+                        onChange={props.handleChange}
+                      />
+                      <div className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md"
+                      onClick={openFileSelector}
+                      style={{ cursor: "pointer" }}
+                      >
+                        <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center"
+                        >
+                          <FontAwesomeIcon
+                            className="text-[#1997BE] font-semibold w-3 h-3"
+                            icon={faPlus}
+                           
+                          />
+                        </div>
+                        <input
+                          type="file"
+                          ref={fileInputRef}
+                          style={{ display: "none" }}
+                          accept="*.*"
+                          onChange={handleFileSelect}
                         />
                       </div>
-                    </button>
-                  </div>
-                  
-                  ) :'' }
-                  
+                        
+                      
+                    </div>
+                      <p className="text-blue-500">{selectedFile ? selectedFile.name :''}</p>
+                    </div>
+                    
+                  ) : (
+                    ""
+                  )}
+
                   <div className="flex gap-2 justify-between">
                     <SingleField
                       name={"delDoc"}
@@ -139,7 +181,6 @@ const AddPositionForm = () => {
                       placeholder={"Name here"}
                       value={props.values.delDoc}
                       onChange={props.handleChange}
-
                     />
                     <button className="bg-[#FF4242] flex justify-center items-center w-10 lg:w-11 rounded-md">
                       <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">

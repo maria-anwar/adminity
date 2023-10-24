@@ -1,11 +1,54 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { db, collection, getDocs } from "../config/firebase";
 
 const Navbox = () => {
   const [isEmpClicked, setEmpClicked] = useState(false);
   const [isPosClicked, setPosClicked] = useState(false);
   const [isLoClicked, setIsLoClicked] = useState(false);
+  const [empData, setEmpData] = useState([]);
+  const [posData, setPosData] = useState([]);
+  const [LocData, setLocData] = useState([]);
+  let empCount = empData.length;
+  let posCount = posData.length;
+  let locCount = LocData.length;
+
+  const fetchEmployees = async () => {
+    getDocs(collection(db, "employees")).then((response) => {
+      const empData = response.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        
+      }));     
+      setEmpData(empData);
+      //console.log(empData);
+    });
+  };
+  const fetchPositions = async () => {
+    getDocs(collection(db, "positions")).then((response) => {
+     const positionData = response.docs.map((doc) => ({
+       ...doc.data(),
+       id: doc.id,
+     }));
+     setPosData(positionData);
+     //console.log(positionData);
+    
+   });
+ };
+  const fetchLocations = async () => {
+    getDocs(collection(db, "locations")).then((response) => {
+     const locationsData = response.docs.map((doc) => ({
+       ...doc.data(),
+       id: doc.id,
+     }));
+     setLocData(locationsData);
+   });
+ };
+  useEffect(() => {
+    fetchEmployees();
+    fetchPositions();
+    fetchLocations();
+  }, []);
 
   const handleEmpClick = () => {
     if (!isEmpClicked) {
@@ -99,7 +142,7 @@ const Navbox = () => {
           </div>
           
           <div className=" text-white text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-medium xl:font-normal flex justify-center items-center pt-1 ">
-            50
+            {empCount}
           </div>
         </Link>
 
@@ -118,7 +161,7 @@ const Navbox = () => {
             Positions
           </div>
           <div className=" text-white text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold lg:font-medium xl:font-normal px-3 pt-1 flex justify-center items-center">
-            07
+            {posCount}
           </div>
         </Link>
 
@@ -137,7 +180,7 @@ const Navbox = () => {
             Locations
           </div>
           <div className=" text-white text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold lg:font-medium xl:font-normal flex justify-center items-center pt-1 ">
-            67
+            {locCount}
           </div>
         </Link>
       </section>

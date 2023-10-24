@@ -1,11 +1,15 @@
 import React, { useState,useEffect } from "react";
 import TitleBar from "../TitleBar";
+import ClipLoader from "react-spinners/ClipLoader";
 import { db, collection, getDocs } from "../../config/firebase";
 
 const PositionTable = () => {
   const [data,setData] = useState([]);
-  const fetchPost = async () => {
+  const [isLoading, setIsLoading] = useState(true);
+  let [color, setColor] = useState("#FC8955");
+  let count = data.length;
 
+  const fetchPost = async () => {
     getDocs(collection(db, "positions")).then((response) => {
      const positionData = response.docs.map((doc) => ({
        ...doc.data(),
@@ -13,6 +17,7 @@ const PositionTable = () => {
      }));
      setData(positionData);
      console.log(positionData);
+     setIsLoading(false);
    });
  };
  useEffect(() => {
@@ -31,11 +36,11 @@ const PositionTable = () => {
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
         <TitleBar
           title={"Positions"}
-          count={"47"}
+          count={count}
           addbtn={"Add Position"}
           url={"/positions/create"}
         />
-        <section className="pt-3 md:pt-4">
+        <section className="pt-3 md:pt-4 mb-10">
           <div className="relative overflow-x-auto shadow-md xxs:rounded-lg border">
             <table className="w-full text-sm text-left text-gray-500">
               <thead className="text-xs text-gray-700 uppercase bg-[#1997BE] ">
@@ -59,7 +64,19 @@ const PositionTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((item) => (
+              {
+                isLoading ? (
+                  <div className="flex justify-center py-10 w-[100%]">
+                  <ClipLoader
+                    color={color}
+                    loading={isLoading}
+                    size={70} 
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                  </div>
+                ): 
+                data.map((item) => (
                   <tr className="bg-white border-b hover:bg-blue-100">
                     <td className="px-6 py-4">
                       <input
@@ -85,7 +102,10 @@ const PositionTable = () => {
                       </a>
                     </td>
                   </tr>
-                ))}
+                ))
+              }
+              
+                
               </tbody>
             </table>
           </div>
