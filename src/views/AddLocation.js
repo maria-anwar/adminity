@@ -1,29 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AddNew from "../components/AddNew";
 import { Formik, Form } from "formik";
-import * as Yup from "yup"; 
+import * as Yup from "yup";
 import NameField from "../components/inputfields/NameField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
 import SimpleField from "../components/inputfields/SimpleField";
-import { db, collection, addDoc  } from "../config/firebase";
+import { db, collection, addDoc } from "../config/firebase";
 
 const AddLocation = () => {
   const location = useLocation();
-  const pathname=location.pathname;
-  const newPath =  pathname.replace(/\/create$/, "");
-  console.log('path is', pathname);
-  console.log('New path is', );
+  const pathname = location.pathname;
+  const [showToast, setShowToast] = useState(false);
+  const newPath = pathname.replace(/\/create$/, "");
+  console.log("path is", pathname);
+  console.log("New path is");
 
-  const initialValues = { 
+  const handleCloseToast = () => {
+    setShowToast(false);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleCloseToast();
+    }, 1000);
+  }, [showToast]);
+
+  const initialValues = {
     locName: " ",
     address: "",
     contactName: "",
     phone: "",
     countryCode: "",
     timezone: "",
-    addEmp:" ",
+    addEmp: " ",
   };
   const validationSchema = Yup.object().shape({
     locName: Yup.string().required("Location name is required"),
@@ -45,7 +56,6 @@ const AddLocation = () => {
       countryCode: values.countryCode,
       timezone: values.timezone,
       addEmp: values.addEmp,
-      
     };
     console.log(
       locData.locName,
@@ -58,19 +68,26 @@ const AddLocation = () => {
     );
 
     addDoc(collection(db, "locations"), locData)
-    .then((response) => {
-      console.log("Document written with ID: ", response.id);
-    })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
-
+      .then((response) => {
+        console.log("Document written with ID: ", response.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+    setShowToast(true);
   };
 
   return (
     <>
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
-        <AddNew title={'Employee'} url={newPath}/>
+        {showToast ? (
+          <div className="fixed top-10 right-5 p-2 bg-[#5FCF5C] text-white rounded-md shadow-md">
+            Information saved successfully
+          </div>
+        ) : (
+          ""
+        )}
+        <AddNew title={"Employee"} url={newPath} />
         <div className="bg-[#F2F5F7] mt-2 xs:mt-3 md:mt-4 mb-10 xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 py-4 md:py-5 lg:py-6 rounded-md shadow-md">
           <Formik
             initialValues={initialValues}
@@ -79,7 +96,6 @@ const AddLocation = () => {
           >
             {(props) => (
               <Form className="flex flex-col gap-4 justify-center ">
-               
                 <SimpleField
                   title={"Location Name"}
                   value={props.values.locName}
@@ -136,18 +152,16 @@ const AddLocation = () => {
                   id={"addEmp"}
                   type={"text"}
                 />
-              
+
                 <button
                   className="bg-[#1997BE] flex max-w-max mt-2 justify-start text-white text-sm font-medium px-4 py-2 rounded-md shadow-md"
                   type="submit"
                 >
                   Save
                 </button>
-               
               </Form>
             )}
           </Formik>
-         
         </div>
       </section>
     </>

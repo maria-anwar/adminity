@@ -37,7 +37,7 @@ import MyToast from "./components/MyToast";
 import MyCalendar from "./components/MyCalendar";
 import Planner from "./components/Planner";
 import Guard from "./components/Guard";
-import Upload from "./components/Upload";
+import MyModal from "./components/MyModal";
 
 const AppRoutes = () => {
     return(
@@ -66,8 +66,8 @@ const AppRoutes = () => {
                         <Route path="/addnew" element={<AddNew />}/>
                         <Route path="/profilebar" element={<ProfileBar />}/>
                         <Route path="/account" element={<Account />}/>
-                        <Route path="/upload" element={<Upload />}/>
-
+                        <Route path="/modal" element={<MyModal />}/>
+                        
 
                     <Route path="/profile" element={<Guard><ProfileLayout /></Guard>}>
                     <Route index element={<Personal />}/>  

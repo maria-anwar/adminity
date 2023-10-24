@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import AddNew from "../components/AddNew";
 import { useLocation } from "react-router-dom";
 import { Formik, Form } from "formik";
@@ -15,15 +15,28 @@ const AddPositionForm = () => {
   const pathname = location.pathname;
   const newPath = pathname.replace(/\/create$/, "");
   const [isToggled, setIsToggled] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const fileInputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  //function for toggle button 
+  //function for toggle button
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
+  const handleCloseToast = () => {
+    setShowToast(false);
+  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleCloseToast();
+    }, 1000);
 
-// methods start for file handling
+    // return () => {
+    //   clearTimeout(timer);
+    // };
+  }, [showToast]);
+
+  // methods start for file handling
   const handleFileSelect = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -54,6 +67,7 @@ const AddPositionForm = () => {
   });
 
   const onSubmit = (values) => {
+    console.log("hello");
     let userData = {
       posTitle: values.posTitle,
       wageRate: values.wageRate,
@@ -75,11 +89,19 @@ const AddPositionForm = () => {
       .catch((error) => {
         console.error("Error adding document: ", error);
       });
+      setShowToast(true);
   };
 
   return (
     <>
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
+        {showToast ? (
+          <div className="fixed top-10 right-5 p-2 bg-[#5FCF5C] text-white rounded-md shadow-md">
+            Information saved successfully
+          </div>
+        ) : (
+          ""
+        )}
         <AddNew title={"Employee"} url={newPath} />
         <div className="bg-[#F2F5F7] flex items-center mt-2 mb-10 xs:mt-3 md:mt-4 xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 py-4 md:py-5 lg:py-6 xl:py-8 rounded-md shadow-md ">
           <Formik
@@ -108,7 +130,7 @@ const AddPositionForm = () => {
                     id={"wageRate"}
                     type={"text"}
                   />
-                </div>               
+                </div>
                 <div className="sm:w-[70%] lg:w-[60%] xl:w-[50%] flex flex-col gap-3">
                   <div className="flex flex-col xxs:gap-4 md:flex-row md:justify-between">
                     <div className=" text-[#3C4349] font-semibold text-sm">
@@ -128,47 +150,43 @@ const AddPositionForm = () => {
                         <div className="w-11 h-6 bg-gray-200 rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                       </div>
                     </div>
-
                   </div>
-                    {/* Toggle functionality here */}
+                  {/* Toggle functionality here */}
                   {isToggled ? (
                     <div>
-
-                    <div className="flex gap-2 justify-between">
-                      <SingleField
-                        name={"addDoc"}
-                        id={"addDoc"}
-                        type={"text"}
-                        placeholder={"Name here"}
-                        value={props.values.addDoc}
-                        onChange={props.handleChange}
-                      />
-                      <div className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md"
-                      onClick={openFileSelector}
-                      style={{ cursor: "pointer" }}
-                      >
-                        <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center"
+                      <div className="flex gap-2 justify-between">
+                        <SingleField
+                          name={"addDoc"}
+                          id={"addDoc"}
+                          type={"text"}
+                          placeholder={"Name here"}
+                          value={props.values.addDoc}
+                          onChange={props.handleChange}
+                        />
+                        <div
+                          className="bg-[#1997BE] flex justify-center items-center w-10 lg:w-11 rounded-md"
+                          onClick={openFileSelector}
+                          style={{ cursor: "pointer" }}
                         >
-                          <FontAwesomeIcon
-                            className="text-[#1997BE] font-semibold w-3 h-3"
-                            icon={faPlus}
-                           
+                          <div className="bg-white rounded-full w-4 h-4 flex justify-center items-center">
+                            <FontAwesomeIcon
+                              className="text-[#1997BE] font-semibold w-3 h-3"
+                              icon={faPlus}
+                            />
+                          </div>
+                          <input
+                            type="file"
+                            ref={fileInputRef}
+                            style={{ display: "none" }}
+                            accept="*.*"
+                            onChange={handleFileSelect}
                           />
                         </div>
-                        <input
-                          type="file"
-                          ref={fileInputRef}
-                          style={{ display: "none" }}
-                          accept="*.*"
-                          onChange={handleFileSelect}
-                        />
                       </div>
-                        
-                      
+                      <p className="text-blue-500">
+                        {selectedFile ? selectedFile.name : ""}
+                      </p>
                     </div>
-                      <p className="text-blue-500">{selectedFile ? selectedFile.name :''}</p>
-                    </div>
-                    
                   ) : (
                     ""
                   )}

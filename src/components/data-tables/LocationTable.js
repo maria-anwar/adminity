@@ -1,11 +1,13 @@
 import React, { useState,useEffect } from "react";
 import TitleBar from "../TitleBar";
 import ClipLoader from "react-spinners/ClipLoader";
+import { FiMoreHorizontal } from "react-icons/fi";
 import { db, collection, getDocs } from "../../config/firebase";
 
 const LocationTable = ()=>{
   const [data,setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   let [color, setColor] = useState("#FC8955");
   let count = data.length;
   console.log(count);
@@ -127,6 +129,27 @@ const LocationTable = ()=>{
           )
         );
       };
+
+      //Modal functions starts here
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleEdit = () => {
+    // Add your edit logic here
+    closeModal();
+  };
+  const handleDelete = () => {
+    // Add your delete logic here
+    closeModal();
+  };
+
+  //Modal functions ends here
+
     return(
         <>
      
@@ -207,12 +230,62 @@ const LocationTable = ()=>{
                  <td className="px-6 py-4">{item.timezone}</td>
                  <td className="px-6 py-4">{''}</td>
                  <td className="px-6 py-4 text-center">
-                   <a
-                     href="#"
-                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                   >
-                     Edit
-                   </a>
+                 <div
+                          className="flex justify-center"
+                          onClick={openModal}
+                        >
+                          <FiMoreHorizontal style={{ cursor: "pointer" }} />
+                        </div>
+                        {isOpen && (
+                          <div className="fixed inset-0 flex items-center justify-center z-50">
+                            <div
+                              className="modal-bg absolute inset-0 opacity-30"
+                              onClick={closeModal}
+                            ></div>
+
+                            <div className="modal-content bg-white p-6 rounded-lg shadow-sm relative">
+                              <button
+                                onClick={closeModal}
+                                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-6 w-6"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M6 18L18 6M6 6l12 12"
+                                  />
+                                </svg>
+                              </button>
+
+                              <h1 className="text-2xl font-semibold mb-4">
+                                Location Id
+                              </h1>
+                              <p className="text-md text-blue-500 font-medium">{item.id}</p>
+
+                              <div className="mt-4">
+                                <button
+                                  onClick={handleEdit}
+                                  className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                >
+                                  Edit
+                                </button>
+                                <button
+                                  onClick={handleDelete}
+                                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                  </td>
                </tr>
              ))

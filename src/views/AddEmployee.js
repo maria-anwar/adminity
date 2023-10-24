@@ -1,21 +1,19 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AddNew from "../components/AddNew";
 import { Formik, Form } from "formik";
-import * as Yup from "yup"; 
+import * as Yup from "yup";
 import NameField from "../components/inputfields/NameField";
 import PhoneField from "../components/inputfields/PhoneField";
 import DropdownField from "../components/inputfields/DropdownField";
 import SimpleField from "../components/inputfields/SimpleField";
-import { db, collection, addDoc  } from "../config/firebase"; 
-
+import { db, collection, addDoc } from "../config/firebase";
 
 const AddEmployee = () => {
-
   const [showToast, setShowToast] = useState(false);
   const location = useLocation();
-  const pathname=location.pathname;
-  const newPath =  pathname.replace(/\/create$/, "");
+  const pathname = location.pathname;
+  const newPath = pathname.replace(/\/create$/, "");
   //console.log('path is', pathname);
   //console.log('New path is', );
 
@@ -27,10 +25,6 @@ const AddEmployee = () => {
     const timer = setTimeout(() => {
       handleCloseToast();
     }, 1000);
-
-    // return () => {
-    //   clearTimeout(timer);
-    // };
   }, [showToast]);
 
   const initialValues = {
@@ -53,10 +47,7 @@ const AddEmployee = () => {
     timezone: Yup.string().required("Timezone is required"),
   });
 
-  const onSubmit = async (values) => {  
-   
-      
-    
+  const onSubmit = async (values) => {
     let userData = {
       fname: values.fname,
       lname: values.lname,
@@ -78,7 +69,6 @@ const AddEmployee = () => {
       userData.timezone
     );
 
-    
     addDoc(collection(db, "employees"), userData)
       .then((response) => {
         console.log("Document written with ID: ", response.id);
@@ -87,20 +77,21 @@ const AddEmployee = () => {
         console.error("Error adding document: ", error);
       });
 
-      setShowToast(true);
-
+    setShowToast(true);
+    
   };
 
   return (
     <>
-
       <section className="xxs:px-3 xs:px-5 md:px-6 lg:px-8 xl:px-12 2xl:px-20">
-      {
-        showToast? (<div className="fixed top-10 right-5 p-2 bg-[#5FCF5C] text-white rounded-md shadow-md">
-      Information saved successfully 
-    </div>): ''
-      }
-        <AddNew title={'Employee'} url={newPath}/>
+        {showToast ? (
+          <div className="fixed top-10 right-5 p-2 bg-[#5FCF5C] text-white rounded-md shadow-md">
+            Information saved successfully
+          </div>
+        ) : (
+          ""
+        )}
+        <AddNew title={"Employee"} url={newPath} />
         <div className="bg-[#F2F5F7] mt-2 xs:mt-3 md:mt-4 xxs:px-4 xs:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 py-4 md:py-5 lg:py-6 rounded-md">
           <Formik
             initialValues={initialValues}
@@ -115,7 +106,7 @@ const AddEmployee = () => {
                   fnameErrors={props.errors.fname}
                   lnameErrors={props.errors.lname}
                   fnplaceholder={"Nick"}
-                  lnplaceholder={"Morris"} 
+                  lnplaceholder={"Morris"}
                   onChange={props.handleChange}
                 />
                 <SimpleField
@@ -179,11 +170,9 @@ const AddEmployee = () => {
                 >
                   Save
                 </button>
-               
               </Form>
             )}
           </Formik>
-         
         </div>
       </section>
     </>
