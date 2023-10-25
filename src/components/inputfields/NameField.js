@@ -10,7 +10,7 @@ const   NameField = (props)=>{
                 htmlForfor="fname"
                 className="text-[#3C4349] text-sm sm:text-medium font-Inter font-medium"
               >
-                First Name
+                Full Name
               </label>
               <input
                   className={`border text-gray-700 rounded-sm shadow-sm py-1 lg:py-1.5 px-3 focus:outline-none focus:border-blue-500 ${props.fnameErrors && "border-red-500 focus:border-red-500"}`}

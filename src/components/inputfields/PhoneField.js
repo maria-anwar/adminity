@@ -19,7 +19,7 @@ const PhoneField = (props) => {
             name="countryCode"
             value={props.codeValue}
             onChange={props.onChange}
-            className={`w-full block px-3 py-1.5 lg:py-[0.47rem] text-sm text-gray-900 border rounded-sm shadow-sm outline:none focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${props.codeErrors && "border-red-500 focus:border-red-500"}`}
+            className={`w-full block px-3 py-1.5 lg:py-[0.47rem] text-sm text-gray-900 border rounded-sm shadow-sm outline:none focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${props.codeErrors && "border-red-500 focus:border-red-500"}`}
           >
             <option selected>+92</option>
             <option value="US">+44</option>
