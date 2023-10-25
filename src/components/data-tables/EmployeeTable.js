@@ -13,7 +13,8 @@ const EmployeeTable = () => {
   const [isOpen, setIsOpen] = useState(false);
   let [color, setColor] = useState("#FC8955");
   let count = data.length;
-
+  console.log(empId);
+  
   const fetchPost = async () => {
     getDocs(collection(db, "employees")).then((response) => {
       const empData = response.docs.map((doc) => ({
@@ -23,8 +24,6 @@ const EmployeeTable = () => {
       setEmpId(empData.id);
       setData(empData);
       setIsLoading(false);
-      console.log(empId);
-      //console.log(empData);
     });
   };
 
@@ -161,6 +160,10 @@ const EmployeeTable = () => {
           count={count}
           addbtn={"Add Employee"}
           url={"/employees/create"}
+          id={"search_keyword"} 
+          type={'text'}
+          value={'def'}
+          name = {"search_keyword"}
         />
         <section className="pt-3 md:pt-4 mb-10">
           <div className="relative overflow-x-auto shadow-md xxs:rounded-lg">
@@ -172,9 +175,6 @@ const EmployeeTable = () => {
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Name
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Employee ID
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Position
@@ -213,6 +213,7 @@ const EmployeeTable = () => {
                 ) : (
                   data.map((item) => (
                     <tr className="bg-white border-b hover:bg-blue-100">
+                    {/* <td>{item.id}</td> */}
                       <td className="px-6 py-4">
                         <input
                           type="checkbox"
@@ -226,7 +227,6 @@ const EmployeeTable = () => {
                       >
                         {item.fname}
                       </th>
-                      <td className="px-6 py-4">{item.empId}</td>
                       <td className="px-6 py-4">{item.position}</td>
                       <td className="px-6 py-4">{item.location}</td>
                       <td className="px-6 py-4">{item.email}</td>
