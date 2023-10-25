@@ -26,7 +26,7 @@ const MyNav2 = () => {
 
   return (
     <>
-      <header className="w-full">
+      <header className="w-full sticky top-0 z-10">
         <nav className="bg-[#1997BE] flex justify-between px-1 xs:px-6 sm:px-8 md:px-10 xl:px-16 items-center">
           <div className="flex lg:flex-row lg:gap-5 lg:items-center">
             <Link to="/">
@@ -129,7 +129,7 @@ const MyNav2 = () => {
             </div>
             {isDropdownClicked ? (
               <div
-                className="text-red-500 absolute right-4 z-10 mt-2 w-52 origin-top-right divide-y divide-gray-100 rounded-md
+                className="absolute right-4 z-10 mt-2 w-52 origin-top-right divide-y divide-gray-100 rounded-md
                bg-white shadow-lg focus:outline-none"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
@@ -189,10 +189,12 @@ const MyNav2 = () => {
             />
           </button>
         </nav>
+
+        {/* Mobile Toggle Nav Area Starts here */}
         {isClicked ? (
-          <div className="xxs:block md:hidden absolute bg-[#1997BE] px-6 w-[55%] pb-2 z-50 border">
+          <div className="xxs:block md:hidden absolute bg-[#1997BE] px-6 w-[55%] pb-2 z-50 border-t shadow-lg">
             <ul
-              className="flex xxs:flex-col gap-[3vh]"
+              className="flex xxs:flex-col gap-[3vh] py-1"
               style={{ marginBottom: "0", paddingLeft: "0" }}
             >
               <li>
