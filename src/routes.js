@@ -39,6 +39,11 @@ import Planner from "./components/Planner";
 import Guard from "./components/Guard";
 import MyModal from "./components/MyModal";
 import Upload from "./components/Upload";
+import MyCalls from "./components/MyCalls";
+import MyTable from "./search-module/MyTable";
+import MainCall from "./components/callback-practice/MainCall";
+import MySearch from "./components/callback-practice/MySearch";
+import TableCalls from "./components/callback-practice/TableCalls";
 
 const AppRoutes = () => {
     return(
@@ -69,6 +74,13 @@ const AppRoutes = () => {
                         <Route path="/account" element={<Account />}/>
                         <Route path="/modal" element={<MyModal />}/>
                         <Route path="/upload" element={<Upload />}/>
+                        <Route path="/calls" element={<MyCalls />}/>
+                        <Route path="/mytable" element={<MyTable />}/>
+                        <Route path="/mycall" element={<MainCall />}/>
+
+                        {/* Dummy Callback routes */}
+                        <Route path="/mysearch" element={<MySearch />}/>
+                        <Route path="/tablecall" element={<TableCalls />}/>
                         
 
                     <Route path="/profile" element={<Guard><ProfileLayout /></Guard>}>

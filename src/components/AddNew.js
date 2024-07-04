@@ -15,7 +15,7 @@ const AddNew = (props) => {
            <FaGreaterThan className="xxs:hidden xs:block text-[#C2BCBC] text-xs"/>
            <span className="text-[#FC8955]">Add New</span> 
           </div>
-          <div className="flex gap-1.5 items-center bg-[#FC8955B3] border border-[#FC8955] px-2 xs:px-3 sm:px-4 xs:py-1.5 md:py-1.5 rounded-md ">
+          <div className="flex gap-1.5 items-center bg-[#FC8955B3] border border-[#FC8955] hover:bg-[#FC8955] px-2 xs:px-3 sm:px-4 xs:py-1.5 md:py-1.5 rounded-md ">
             <Link
               to={props.url}
               className="text-white h-full flex justify-center items-center text xs:text-xs sm:text-sm xl:text-sm xs:font-medium"

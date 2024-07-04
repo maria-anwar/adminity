@@ -142,13 +142,19 @@ const EmployeeTable = () => {
     setIsOpen(false);
   };
 
+  const handleDelete = () => {
+    // Add your edit logic here
+    closeModal();
+  };
   const handleEdit = () => {
     // Add your edit logic here
     closeModal();
   };
-  const handleDelete = () => {
-    // Add your delete logic here
-    closeModal();
+  const onSearchClickListener = (userQuery) => {
+
+    // data source
+    // add query according to the search userString
+    // set datasource our data table will be updated automatically
   };
 
   //Modal functions ends here
@@ -163,6 +169,7 @@ const EmployeeTable = () => {
           id={"search_keyword"} 
           type={'text'}
           value={'def'}
+          searchClickListener = {()=> onSearchClickListener()}
           name = {"search_keyword"}
         />
         <section className="pt-3 md:pt-4 mb-10">

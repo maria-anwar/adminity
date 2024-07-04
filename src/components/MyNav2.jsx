@@ -124,7 +124,7 @@ const MyNav2 = () => {
                 <div className="text-xs xl:text-sm font-light">Malhoc Inc.</div>
               </div>
               <button onClick={handleDropdown}>
-                <IoIosArrowDown className="dropdown-icon" />
+                <IoIosArrowDown className="dropdown-icon"  />
               </button>
             </div>
             {isDropdownClicked ? (
